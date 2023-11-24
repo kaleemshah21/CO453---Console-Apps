@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Serialization;
 
 namespace ConsoleAppProject.App01
 {
@@ -16,6 +17,7 @@ namespace ConsoleAppProject.App01
 
         public void run()
         {
+            OutputHeading();
             InputMiles();
             CalculateFeet();
             OutputFeet();
@@ -34,12 +36,22 @@ namespace ConsoleAppProject.App01
 
         private void CalculateFeet()
         {
-
+            feet = miles * 5280;
         }
 
         private void OutputFeet()
         {
+            Console.WriteLine(miles + " miles is " + feet + " feet!");
+        }
 
+        private void OutputHeading()
+        {
+            Console.WriteLine();
+            Console.WriteLine("   -------------------------");
+            Console.WriteLine("      Converting Distance   ");
+            Console.WriteLine("        By Kaleem Shah      ");
+            Console.WriteLine("   -------------------------");
+            Console.WriteLine();
         }
     }
 }
