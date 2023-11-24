@@ -10,7 +10,6 @@ namespace ConsoleAppProject.App01
     /// </author>
     public class DistanceConverter
     {
-
         private double miles;
         private double feet;
 
