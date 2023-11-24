@@ -26,8 +26,10 @@ namespace ConsoleAppProject
             Console.WriteLine();
             Console.WriteLine("Hello World!");
 
+            //code added
             DistanceConverter converter = new DistanceConverter();
-            //converter.run();
+            converter.run();
+
         }
     }
 }
