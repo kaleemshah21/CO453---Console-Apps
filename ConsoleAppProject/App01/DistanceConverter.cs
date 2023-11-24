@@ -4,71 +4,79 @@ using System.Xml.Serialization;
 namespace ConsoleAppProject.App01
 {
     /// <summary>
-    /// Please describe the main features of this App
+    /// This app will prompt the user to choose the
+    /// units they want to convert from {fromUnit}
+    /// and the units they want to convert to {toUnit}
+    /// it will then ask them to enter the {fromDistance}
+    /// and then calculate the conversion, it will then
+    /// output the converted number on screen.
     /// </summary>
     /// <author>
-    /// Kaleem version 0.3
+    /// Kaleem version 0.6
     /// </author>
+
     public class DistanceConverter
     {
-        //feet to miles, miles to metres
-        private double miles;
-        private double feet;
-        private double metres;
-
         private string fromUnit;
         private string toUnit;
+
+        private double fromDistance;
+        private double toDistance;
+
+        public const string FEET = "Feet";
+        public const string METRES = "Metres";
+        public const string MILES = "Miles";
 
         public const int FEET_IN_MILES = 5280;
         public const double METRES_IN_MILES = 1609.34;
         public const double FEET_IN_METRES = 3.28084;
 
+        public DistanceConverter()
+        {
+            fromUnit = MILES;
+            toUnit = FEET;
+        }
+
         public void run()
         {
-            MilesToFeet();
-            FeetToMiles();
-            MilesToMetres();
+            ConvertDistance();
         }
 
-        private void MilesToFeet()
+        private void ConvertDistance()
         {
-            OutputHeading("Converting Miles to Feet");
+            OutputHeading();
+            fromUnit = SelectUnit("\n Please select the from distance unit: ");
+            toUnit = SelectUnit("\n Please select the to distance unit: ");
 
-            miles = InputDistance("Please enter the number of miles: ");
+            Console.WriteLine($" Converting {fromUnit} to {toUnit}");
 
-            CalculateFeet();
+            fromDistance = InputDistance($" Enter the number of {fromUnit}: ");
 
-            OutputDistance(miles, nameof(miles), feet, nameof(feet));
+            CalculateDistance();
+
+            OutputDistance();
         }
 
-        private void FeetToMiles()
+        private string SelectUnit(string prompt)
         {
-            OutputHeading("Converting Feet to Miles");
-
-            miles = InputDistance("Please enter the number of feet: ");
-            
-            CalculateMiles();
-
-            OutputDistance(feet, nameof(feet), miles, nameof(miles));
+            string choice = DisplayChoices(prompt);
+            string unit = ExecuteChoice(choice);
+            Console.WriteLine($"\n You have chosen {unit}");
+            return unit;
         }
 
-        private void MilesToMetres()
+        private static string DisplayChoices(string prompt)
         {
-            OutputHeading("Converting Miles to Metres");
+            Console.WriteLine();
+            Console.WriteLine($" 1. {FEET}");
+            Console.WriteLine($" 2. {METRES}");
+            Console.WriteLine($" 3. {MILES}");
+            Console.WriteLine();
 
-            miles = InputDistance("Please enter the number of miles: ");
-            
-            CalculateMetres();
-
-            OutputDistance(miles, nameof(miles), metres, nameof(metres));
+            Console.WriteLine(prompt);
+            string choice = Console.ReadLine();
+            return choice;
         }
-
-        /// <summary>
-        /// Prompt the user to enter the distance in miles
-        /// Input the miles as a double number
-        /// </summary>
-        /// 
-
 
         private double InputDistance(string prompt)
         {
@@ -77,37 +85,50 @@ namespace ConsoleAppProject.App01
             return Convert.ToDouble(value);
         }
 
-        private void CalculateMetres()
+        private static string ExecuteChoice(string choice)
         {
-            metres = miles * METRES_IN_MILES;
+            if (choice.Equals("1"))
+            {
+                return FEET;
+            }
+            else if (choice.Equals("2"))
+            {
+                return METRES;
+            }
+            else if (choice.Equals("3"))
+            {
+                return MILES;
+            }
+
+            return null;
         }
 
-        private void CalculateMiles()
+        private void CalculateDistance()
         {
-            miles = feet / FEET_IN_MILES;
+            if(fromUnit == MILES &&  toUnit == FEET)
+            {
+                toDistance = fromDistance * FEET_IN_MILES;
+            }
+            else if(fromUnit == FEET && toUnit == MILES) 
+            {
+                toDistance = fromDistance / FEET_IN_MILES;
+            }
+            //else if(fromUnit == )
         }
 
-        private void CalculateFeet()
+        private void OutputDistance()
         {
-            feet = miles * FEET_IN_MILES;
-        }
-
-        private void OutputDistance(Double fromDistance, string fromUnit,
-            double toDistance, string toUnit)
-        {
-            Console.WriteLine($"{fromDistance} {fromUnit} is {toDistance} {toUnit}");
+            Console.WriteLine($"\n {fromDistance} {fromUnit} is {toDistance} {toUnit}");
         }
 
 
-        private void OutputHeading(string prompt)
+        private void OutputHeading()
         {
             Console.WriteLine(" ");
             Console.WriteLine("   -------------------------");
             Console.WriteLine("      Converting Distance   ");
             Console.WriteLine("        By Kaleem Shah      ");
             Console.WriteLine("   -------------------------");
-            Console.WriteLine(" ");
-            Console.WriteLine(prompt);
             Console.WriteLine(" ");
         }
     }
