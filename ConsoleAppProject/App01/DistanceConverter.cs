@@ -107,13 +107,29 @@ namespace ConsoleAppProject.App01
         {
             if(fromUnit == MILES &&  toUnit == FEET)
             {
-                toDistance = fromDistance * FEET_IN_MILES;
+                toDistance = Math.Round(fromDistance * FEET_IN_MILES,2);
             }
             else if(fromUnit == FEET && toUnit == MILES) 
             {
-                toDistance = fromDistance / FEET_IN_MILES;
+                toDistance = Math.Round(fromDistance / FEET_IN_MILES,2);
             }
-            //else if(fromUnit == )
+            else if(fromUnit == FEET && toUnit == METRES)
+            {
+                toDistance = Math.Round(fromDistance / FEET_IN_METRES, 2);
+            }
+            else if(fromUnit == METRES && toUnit == FEET)
+            {
+                toDistance = Math.Round(fromDistance * FEET_IN_METRES,2);
+            }
+            else if(fromUnit == MILES && toUnit == METRES)
+            {
+                toDistance = Math.Round(fromDistance * METRES_IN_MILES,2);
+            }
+            else if (fromUnit == METRES && toUnit == MILES)
+            {
+                toDistance = Math.Round(fromDistance / METRES_IN_MILES, 2);
+            }
+
         }
 
         private void OutputDistance()
