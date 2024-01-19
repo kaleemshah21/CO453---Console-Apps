@@ -1,7 +1,80 @@
-﻿
+﻿@model ConsoleAppProject.App01.DistanceConverter
+@using ConsoleAppProject.App01
 @{
     ViewData["Title"] = "Distance Converter";
 }
 
-<h1>Distance Converter</h1>
+<h1>App01: Distance Converter</h1>
+<h2>by Kaleem Shah</h2>
+<p>This application will convert a distance entered in one unit into the equivalent distance in another unit.</p>
 
+<form method="post">
+
+    <h2>Convert from:</h2>
+
+    <p>
+
+        <!-- this creates a label for the From Unit and allows the user to
+            select any of the options shown below
+        -->
+        <label>From Unit: </label>
+        <select asp-for="@Model.FromUnit">
+            <option>@DistanceConverter.MILES</option>
+            <option>@DistanceConverter.METRES</option>
+            <option>@DistanceConverter.FEET</option>
+
+        </select>
+
+    </p>
+    <p>
+        <!--this sets the initial value to null and so the placeholder is
+            shown when there is no value in the From Distance box
+        -->
+        @if (Model.FromDistance == 0)
+        {
+            <input type ="text" asp-for="@Model.FromDistance" value ="" placeholder="From Distance" required />
+        }
+        <!--if there the ToDistance is typed in and there is a value, then
+        it will show the value
+        -->
+        else
+        {
+            <input type="text" asp-for="@Model.FromDistance" placeholder="From Distance" required />
+        }
+    </p>
+
+    <h2>Convert to:</h2>
+    <p>
+
+        <!-- this creates a label for the To Unit and allows the user to 
+            select any of the options shown below
+        -->
+        <label>To Unit: </label>
+        <select asp-for="@Model.ToUnit">
+            <option>@DistanceConverter.MILES</option>
+            <option>@DistanceConverter.METRES</option>
+            <option>@DistanceConverter.FEET</option>
+
+        </select>
+
+    </p>
+    <p>
+        <!--this sets the initial value to null and so the placeholder is
+            shown when there is no value in the To Distance box
+        -->
+        @if (Model.ToDistance == 0)
+        {
+            <input type="text" asp-for="@Model.ToDistance" value="" placeholder="To Distance" readonly />
+        }
+        <!--if there the ToDistance is not null and there is a value, then
+        it will set the value of the box to the ToDistance to 2d.p
+        -->
+        else
+        {
+            <input type="text" asp-for="@Model.ToDistance" value ="@Model.ToDistance.ToString("0.00")" placeholder="To Distance" readonly />
+        }
+    </p>
+    <p>
+        <button class="btn btn-success" type ="submit">Calculate</button>
+    </p>
+</form>

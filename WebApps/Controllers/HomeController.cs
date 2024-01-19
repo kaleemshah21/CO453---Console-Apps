@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using WebApps.Models;
+//creates a reference to the Distance converter
+using ConsoleAppProject.App01;
+
 
 namespace WebApps.Controllers
 {
@@ -11,9 +14,16 @@ namespace WebApps.Controllers
         {
             return View();
         }
-        public IActionResult DistanceConverter()
+        /*if there is a FromDistance entered, it will then call the 
+         * CalculateDistance method and returns the value.
+        */
+        public IActionResult DistanceConverter(DistanceConverter converter)
         {
-            return View();
+            if(converter.FromDistance > 0)
+            {
+                converter.CalculateDistance();
+            }
+            return View(converter);
         }
 
         public IActionResult Privacy()

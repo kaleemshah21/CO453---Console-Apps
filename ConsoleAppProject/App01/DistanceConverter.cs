@@ -104,7 +104,7 @@ namespace ConsoleAppProject.App01
             return null;
         }
 
-        private void CalculateDistance()
+        public void CalculateDistance()
         {
             if(FromUnit == MILES &&  ToUnit == FEET)
             {
