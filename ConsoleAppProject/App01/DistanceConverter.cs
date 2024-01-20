@@ -130,6 +130,10 @@ namespace ConsoleAppProject.App01
             {
                 ToDistance = Math.Round(FromDistance / METRES_IN_MILES, 2);
             }
+            else if (FromUnit == ToUnit)
+            {
+                ToDistance = FromDistance;
+            }
 
         }
 
