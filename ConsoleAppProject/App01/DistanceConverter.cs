@@ -46,8 +46,8 @@ namespace ConsoleAppProject.App01
         {
 
             OutputHeading();
-            //FromUnit = SelectUnit("\n Please select the from distance unit: ");
-            //ToUnit = SelectUnit("\n Please select the to distance unit: ");
+            FromUnit = SelectUnit("\n Please select the from distance unit: ");
+            ToUnit = SelectUnit("\n Please select the to distance unit: ");
 
             Console.WriteLine($" Converting {FromUnit} to {ToUnit}");
 
@@ -58,10 +58,10 @@ namespace ConsoleAppProject.App01
             OutputDistance();
         }
 
-        private string SelectUnit(string prompt)
+        private DistanceUnits SelectUnit(string prompt)
         {
             string choice = DisplayChoices(prompt);
-            string unit = ExecuteChoice(choice);
+            DistanceUnits unit = ExecuteChoice(choice);
             Console.WriteLine($"\n You have chosen {unit}");
             return unit;
         }
@@ -88,22 +88,22 @@ namespace ConsoleAppProject.App01
             return Convert.ToDouble(value);
         }
 
-        private static string ExecuteChoice(string choice)
+        private static DistanceUnits ExecuteChoice(string choice)
         {
             if (choice.Equals("1"))
             {
-                return FEET;
+                return DistanceUnits.Feet;
             }
             else if (choice.Equals("2"))
             {
-                return METRES;
+                return DistanceUnits.Metres;
             }
             else if (choice.Equals("3"))
             {
-                return MILES;
+                return DistanceUnits.Miles;
             }
 
-            return null;
+            return DistanceUnits.NoUnit;
         }
 
         public void CalculateDistance()
