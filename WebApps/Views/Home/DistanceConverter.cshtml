@@ -18,10 +18,11 @@
             select any of the options shown below
         -->
         <label>From Unit: </label>
-        <select asp-for="@Model.FromUnit">
-            <option>@DistanceConverter.MILES</option>
+        <select asp-for="@Model.FromUnit" required
+        asp-items="@Html.GetEnumSelectList<DistanceUnits>()">
+            @* <option>@DistanceConverter.MILES</option>
             <option>@DistanceConverter.METRES</option>
-            <option>@DistanceConverter.FEET</option>
+            <option>@DistanceConverter.FEET</option> *@
 
         </select>
 
@@ -50,10 +51,11 @@
             select any of the options shown below
         -->
         <label>To Unit: </label>
-        <select asp-for="@Model.ToUnit">
-            <option>@DistanceConverter.MILES</option>
+        <select asp-for="@Model.ToUnit" required
+                asp-items="@Html.GetEnumSelectList<DistanceUnits>()">
+            @* <option>@DistanceConverter.MILES</option>
             <option>@DistanceConverter.METRES</option>
-            <option>@DistanceConverter.FEET</option>
+            <option>@DistanceConverter.FEET</option> *@
 
         </select>
 
