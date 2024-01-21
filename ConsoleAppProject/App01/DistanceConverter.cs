@@ -99,7 +99,7 @@ namespace ConsoleAppProject.App01
                 catch (Exception e)
                 {
                     error = true;
-                    Console.WriteLine("invalid entry");
+                    Console.WriteLine(" invalid entry");
                 }
             }
             while (error == true);
