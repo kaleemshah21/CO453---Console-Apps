@@ -45,7 +45,7 @@ namespace ConsoleAppProject.App01
 
         private void ConvertDistance()
         {
-
+            
             OutputHeading();
             FromUnit = SelectUnit("\n Please select the from distance unit: ");
             ToUnit = SelectUnit("\n Please select the to distance unit: ");
@@ -55,16 +55,34 @@ namespace ConsoleAppProject.App01
             FromDistance = InputDistance($" Enter the number of {FromUnit}: ");
 
             CalculateDistance();
-
             OutputDistance();
+            
         }
 
         private DistanceUnits SelectUnit(string prompt)
         {
-            string choice = DisplayChoices(prompt);
+            DistanceUnits unit;
+            do
+            {
+                string choice = DisplayChoices(prompt);
+                unit = ExecuteChoice(choice);
+
+                if (unit == DistanceUnits.NoUnit)
+                {
+                    Console.Write(" Invalid Entry, Please Re-Enter ");
+                }
+                else
+                {
+                    Console.WriteLine($"\n You have chosen {unit}");
+                }
+            } while (unit == DistanceUnits.NoUnit);
+
+            return unit;
+
+            /*string choice = DisplayChoices(prompt);
             DistanceUnits unit = ExecuteChoice(choice);
             Console.WriteLine($"\n You have chosen {unit}");
-            return unit;
+            return unit;*/
         }
 
         private static string DisplayChoices(string prompt)
@@ -125,8 +143,10 @@ namespace ConsoleAppProject.App01
             {
                 return DistanceUnits.Miles;
             }
-
+            
             return DistanceUnits.NoUnit;
+            
+             
         }
 
         public void CalculateDistance()
