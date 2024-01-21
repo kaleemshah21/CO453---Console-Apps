@@ -77,7 +77,7 @@ namespace ConsoleAppProject.App01
             Console.WriteLine($" 3. {DistanceUnits.Miles}");
             Console.WriteLine();
 
-            Console.WriteLine(prompt);
+            Console.Write(prompt);
             string choice = Console.ReadLine();
             return choice;
         }
@@ -89,7 +89,7 @@ namespace ConsoleAppProject.App01
             bool error = false;
             do
             {
-                Console.WriteLine(prompt);
+                Console.Write(prompt);
                 string value = Console.ReadLine();
                 try
                 {
@@ -172,10 +172,10 @@ namespace ConsoleAppProject.App01
         private void OutputHeading()
         {
             Console.WriteLine(" ");
-            Console.WriteLine("   -------------------------");
-            Console.WriteLine("      Converting Distance   ");
-            Console.WriteLine("        By Kaleem Shah      ");
-            Console.WriteLine("   -------------------------");
+            Console.WriteLine(" -------------------------");
+            Console.WriteLine("    Converting Distance   ");
+            Console.WriteLine("      By Kaleem Shah      ");
+            Console.WriteLine(" -------------------------");
             Console.WriteLine(" ");
         }
     }
