@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Xml.Serialization;
 
 namespace ConsoleAppProject.App01
@@ -83,9 +84,30 @@ namespace ConsoleAppProject.App01
 
         private double InputDistance(string prompt)
         {
-            Console.WriteLine(prompt);
+            double result = 0.0;
+            bool error = false;
+            do
+            {
+                Console.WriteLine(prompt);
+                string value = Console.ReadLine();
+                try
+                {
+                    result = Convert.ToDouble(value);
+                    break;
+                }
+                catch (Exception e)
+                {
+                    error = true;
+                    Console.WriteLine("invalid entry");
+                }
+            }
+            while (error == true);
+            return result;
+
+            /*Console.WriteLine(prompt);
             string value = Console.ReadLine();
-            return Convert.ToDouble(value);
+            
+            return Convert.ToDouble(value);*/
         }
 
         private static DistanceUnits ExecuteChoice(string choice)
