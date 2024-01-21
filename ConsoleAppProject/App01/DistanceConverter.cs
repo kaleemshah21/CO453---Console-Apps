@@ -82,6 +82,7 @@ namespace ConsoleAppProject.App01
             return choice;
         }
 
+        //added a do while and try catch loop to catch any invalid entries
         private double InputDistance(string prompt)
         {
             double result = 0.0;
