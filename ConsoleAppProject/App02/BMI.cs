@@ -1,6 +1,7 @@
 ﻿using ConsoleAppProject.App01;
 using System;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace ConsoleAppProject.App02
 {
@@ -17,6 +18,11 @@ namespace ConsoleAppProject.App02
     /// </author>
     public class BMI
     {
+        /// <summary>
+        /// declaring variables, some with getters
+        /// and setters so that the Web App can access
+        /// the variables.
+        /// </summary>
         public double weight, height;
         public double Bmi { get; set; }
         public double Kilograms { get; set; }
@@ -26,9 +32,15 @@ namespace ConsoleAppProject.App02
         public double Inches { get; set; }
         public double Metres { get; set; }
 
-        public string choice;
+        public int choice;
         public string BMImessage;
 
+
+        /// <summary>
+        /// declares constants for the upper bounds
+        /// of the BMI classes, to be used later
+        /// to display the users BMI class.
+        /// </summary>
         const double Underweight = 18.5;
         const double Normal = 24.9;
         const double Overweight = 29.9;
@@ -39,9 +51,19 @@ namespace ConsoleAppProject.App02
 
         public void run()
         {
+            /*main method of program, calls OutputHeading()
+             to output the program header, it then calls the
+            DisplayMenu method which displays the menu and 
+            asks the user to enter a choice, the choice is then
+            validated and returned.
+            if the choice is 1, then it calls methods to calculate
+            the bmi, which is then outputted as well as the BAME 
+            message, the same for choice 2 except the methods are
+            different.*/
+
             OutputHeading();
             choice = DisplayMenu(" Pick which units you would like to work with: ");
-            if (choice == "1")
+            if (choice == 1)
             {
                 GetImperialWeight();
                 GetImperialHeight();
@@ -50,9 +72,9 @@ namespace ConsoleAppProject.App02
                 Console.WriteLine(BMImessage);
                 string bameMessage = DisplayBAMEMessage();
                 Console.WriteLine(bameMessage);
-                //Console.Write(Math.Round(bmi,2));
+                
             }
-            if (choice == "2")
+            if (choice == 2)
             {
                 GetMetricWeight();
                 GetMetricHeight();
@@ -61,11 +83,14 @@ namespace ConsoleAppProject.App02
                 Console.WriteLine(BMImessage);
                 string bameMessage = DisplayBAMEMessage();
                 Console.WriteLine(bameMessage);
-                //Console.Write(Math.Round(bmi, 2));
+                
             }
 
         }
 
+        /// <summary>
+        /// calculates bmi with imperial units
+        /// </summary>
         public void GetImperialBMI()
         {
             //BMI = (weight in pounds) x 703 / (height in inches)2
@@ -73,13 +98,16 @@ namespace ConsoleAppProject.App02
             Inches = (Feet * 12) + Inches;
             Bmi = (((Pounds) * 703)) / ((Inches) * (Inches));
         }
-
+        /// <summary>
+        /// calculates bmi with metric units
+        /// </summary>
         public void GetMetricBMI()
         {
             //BMI = (weight in kg) / (height in metres)2
             Bmi = (Kilograms / (Metres * Metres));
         }
 
+        //returns the BAME message
         public string DisplayBAMEMessage()
         {
             string bameMessage = ("\n if you are Black, Asian or other minority ethnic groups, " +
@@ -87,18 +115,30 @@ namespace ConsoleAppProject.App02
                 " Adults at 27.5 or more are at high risk.");
             return bameMessage;
         }
-        private static string DisplayMenu(string prompt)
+        /*displays the menu and validates user input, then
+         returns the choice once validated.*/
+        private static int DisplayMenu(string prompt)
         {
             Console.WriteLine();
             Console.WriteLine(" 1. Imperial Units");
             Console.WriteLine(" 2. Metric Units");
             Console.WriteLine();
 
+            int menuChoice;
+
+            /*this while loop is good, it just loops until a valid input is entered, so it will loop until either a 1 or a 2 is entered, good for error checking*/
             Console.Write(prompt);
-            string choice = Console.ReadLine();
-            return choice;
+            while (!int.TryParse(Console.ReadLine(), out menuChoice) || menuChoice > 2 || menuChoice < 1)
+            {
+                DisplayErrorMessage(" Invalid input. Please enter a valid choice.");
+                Console.Write(prompt);
+            }
+            return menuChoice;
         }
 
+        /*prompts user to enter weight in stone and pounds,
+         it then validates the input with a while loop and 
+        sets the variables to the input if valid.*/
         private void GetImperialWeight()
         {
             int StoneInput;
@@ -122,6 +162,8 @@ namespace ConsoleAppProject.App02
 
             
         }
+
+
 
         public string GetBMIMessage()
         {

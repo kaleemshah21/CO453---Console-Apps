@@ -18,6 +18,7 @@ namespace ConsoleAppProject
     {
         public static void Main(string[] args)
         {
+            int choice;
             Console.ForegroundColor = ConsoleColor.Yellow;
 
             Console.WriteLine();
@@ -26,12 +27,44 @@ namespace ConsoleAppProject
             Console.WriteLine(" =================================================");
             Console.WriteLine();
 
-            //code added
-            //DistanceConverter converter = new DistanceConverter();
-            //converter.run();
-            BMI calc = new BMI();
-            calc.run();
+            choice = DisplayMenu(" Pick which app you would like to use: ");
 
+            if (choice == 1) 
+            {
+                DistanceConverter converter = new DistanceConverter();
+                converter.run();
+            }
+            else if (choice == 2)
+            {
+                BMI bmiCalculator = new BMI();
+                bmiCalculator.run();
+            }
+
+            
+
+        }
+
+        private static int DisplayMenu(string prompt)
+        {
+            Console.WriteLine(" ┌───────────┐ ");
+            Console.WriteLine(" │ 1. App01  │ ");
+            Console.WriteLine(" │ 2. App02  │ ");
+            Console.WriteLine(" └───────────┘ ");
+
+            int menuChoice;
+
+            Console.Write(prompt);
+            while (!int.TryParse(Console.ReadLine(), out menuChoice) || menuChoice > 2 || menuChoice < 1)
+            {
+                DisplayErrorMessage(" Invalid input. Please enter a valid choice.");
+                Console.Write(prompt);
+            }
+            return menuChoice;
+        }
+
+        static void DisplayErrorMessage(string message)
+        {
+            Console.WriteLine(message);
         }
     }
 }
