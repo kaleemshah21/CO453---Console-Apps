@@ -20,15 +20,11 @@ namespace ConsoleAppProject
         {
             int choice;
             Console.ForegroundColor = ConsoleColor.Yellow;
-
-            Console.WriteLine();
-            Console.WriteLine(" =================================================");
-            Console.WriteLine("    BNU CO453 Applications Programming 2022-2023! ");
-            Console.WriteLine(" =================================================");
-            Console.WriteLine();
-
+            
+            OutputHeading();
             choice = DisplayMenu(" Pick which app you would like to use: ");
 
+            /*if statements to different menu options*/
             if (choice == 1) 
             {
                 DistanceConverter converter = new DistanceConverter();
@@ -40,19 +36,25 @@ namespace ConsoleAppProject
                 bmiCalculator.run();
             }
 
-            
-
         }
 
+        /*displays the menu and asks for user input,
+         it then validates the input and returns the
+        choice*/
         private static int DisplayMenu(string prompt)
         {
-            Console.WriteLine(" ┌───────────┐ ");
-            Console.WriteLine(" │ 1. App01  │ ");
-            Console.WriteLine(" │ 2. App02  │ ");
-            Console.WriteLine(" └───────────┘ ");
+            Console.WriteLine(" ┌─────────────────────────────────┐ ");
+            Console.WriteLine(" │ Applications                    │ ");
+            Console.WriteLine(" │                                 │ ");
+            Console.WriteLine(" │ 1. App01                        │ ");
+            Console.WriteLine(" │ 2. App02                        │ ");
+            Console.WriteLine(" │ 2. App03 (not yet implemented)  │ ");
+            Console.WriteLine(" │ 2. App04 (not yet implemented)  │ ");
+            Console.WriteLine(" │ 2. App05 (not yet implemented)  │ ");
+            Console.WriteLine(" └─────────────────────────────────┘ ");
+            Console.WriteLine("                                     ");
 
             int menuChoice;
-
             Console.Write(prompt);
             while (!int.TryParse(Console.ReadLine(), out menuChoice) || menuChoice > 2 || menuChoice < 1)
             {
@@ -62,9 +64,21 @@ namespace ConsoleAppProject
             return menuChoice;
         }
 
+        /*method to then Display a message that is
+         passed through*/
         static void DisplayErrorMessage(string message)
         {
             Console.WriteLine(message);
+        }
+
+        /*outputs the heading of the program*/
+        private static void OutputHeading()
+        {
+            Console.WriteLine();
+            Console.WriteLine(" =================================================");
+            Console.WriteLine("   BNU CO453 Applications Programming 2022-2023!  ");
+            Console.WriteLine(" =================================================");
+            Console.WriteLine();
         }
     }
 }

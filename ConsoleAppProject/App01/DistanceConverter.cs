@@ -123,10 +123,6 @@ namespace ConsoleAppProject.App01
             while (error == true);
             return result;
 
-            /*Console.WriteLine(prompt);
-            string value = Console.ReadLine();
-            
-            return Convert.ToDouble(value);*/
         }
 
         private static DistanceUnits ExecuteChoice(string choice)
@@ -149,8 +145,10 @@ namespace ConsoleAppProject.App01
              
         }
 
+        /*this method calculates the todistance based
+          on the user entered values.*/
         public void CalculateDistance()
-        //changed from e.g. FEET, to DistanceUnits.Feet from enum class
+        
         {
             if (FromUnit == DistanceUnits.Miles && ToUnit == DistanceUnits.Feet)
             {
@@ -183,12 +181,14 @@ namespace ConsoleAppProject.App01
 
         }
 
+        /*outputs the converted distance as well
+         as units from and to*/
         private void OutputDistance()
         {
             Console.WriteLine($"\n {FromDistance} {FromUnit} is {ToDistance} {ToUnit}");
         }
 
-
+        /*outputs the heading of the program*/
         private void OutputHeading()
         {
             Console.WriteLine(" ");

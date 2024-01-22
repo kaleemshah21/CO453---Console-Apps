@@ -14,7 +14,7 @@ namespace ConsoleAppProject.App02
     /// it then outputs the BAME message.
     /// </summary>
     /// <author>
-    /// Student Name version 0.1
+    /// Kaleem Shah v0.3
     /// </author>
     public class BMI
     {
@@ -88,9 +88,7 @@ namespace ConsoleAppProject.App02
 
         }
 
-        /// <summary>
-        /// calculates bmi with imperial units
-        /// </summary>
+        /*calculates bmi with imperial units*/
         public void GetImperialBMI()
         {
             //BMI = (weight in pounds) x 703 / (height in inches)2
@@ -98,9 +96,8 @@ namespace ConsoleAppProject.App02
             Inches = (Feet * 12) + Inches;
             Bmi = (((Pounds) * 703)) / ((Inches) * (Inches));
         }
-        /// <summary>
-        /// calculates bmi with metric units
-        /// </summary>
+
+        /*calculates bmi with metric units*/
         public void GetMetricBMI()
         {
             //BMI = (weight in kg) / (height in metres)2
@@ -126,7 +123,6 @@ namespace ConsoleAppProject.App02
 
             int menuChoice;
 
-            /*this while loop is good, it just loops until a valid input is entered, so it will loop until either a 1 or a 2 is entered, good for error checking*/
             Console.Write(prompt);
             while (!int.TryParse(Console.ReadLine(), out menuChoice) || menuChoice > 2 || menuChoice < 1)
             {
@@ -159,12 +155,13 @@ namespace ConsoleAppProject.App02
                 Console.Write(" Enter weight in pounds: ");
             }
             Pounds = PoundsInput;
-
-            
+  
         }
 
-
-
+        /*creates a StringBuilder message and appends the
+         relevant prompt to the message depending on the
+        bmi index that has been calculated, it is then
+        returns the message as a string.*/
         public string GetBMIMessage()
         {
             StringBuilder message = new StringBuilder();
@@ -199,6 +196,11 @@ namespace ConsoleAppProject.App02
             }
             return message.ToString();
         }
+
+        /*prompts the user to enter height in feet and inches
+         it then validates the inputs and then sets the
+        corresponding variables to the user input once 
+        validated*/
         private void GetImperialHeight()
         {
             double InchesInput;
@@ -223,6 +225,10 @@ namespace ConsoleAppProject.App02
 
         }
 
+        /*prompts the user to enter weight in kilograms,
+         it then validates the input and then sets the
+        corresponding variables to the user input once 
+        validated*/
         private void GetMetricWeight()
         {
             double KilogramsInput;
@@ -236,6 +242,10 @@ namespace ConsoleAppProject.App02
             Kilograms = KilogramsInput;
         }
 
+        /*prompts the user to enter metric height in metres,
+         it then validates the input and then sets the
+        corresponding variables to the user input once 
+        validated*/
         private void GetMetricHeight()
         {
             double MetresInput;
@@ -249,13 +259,15 @@ namespace ConsoleAppProject.App02
             Metres = MetresInput;
 
         }
-
+        
+        /*this method is used to Display a message that 
+         has been passed through.*/
         static void DisplayErrorMessage(string message)
         {
             Console.WriteLine(message);
         }
 
-
+        /*outputs the heading that introduces the program*/
         private void OutputHeading()
         {
             Console.WriteLine(" ");
