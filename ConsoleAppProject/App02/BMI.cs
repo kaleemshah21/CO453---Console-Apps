@@ -5,7 +5,12 @@ using System.Text;
 namespace ConsoleAppProject.App02
 {
     /// <summary>
-    /// Please describe the main features of this App
+    /// this app asks the user to choose between imperial
+    /// or metric units, it then asks the user to enter 
+    /// their weight and height, which then calculates
+    /// their bmi index, this is then used to find their
+    /// bmi message of underweight, normal, overweight etc
+    /// it then outputs the BAME message.
     /// </summary>
     /// <author>
     /// Student Name version 0.1
@@ -27,14 +32,8 @@ namespace ConsoleAppProject.App02
         const double Overweight = 29.9;
         const double ObeseCI = 34.9;
         const double ObeseCII = 39.9;
-        const double ObeseCIII = 40;
+       
 
-        /* Underweight< 18.50
-         Normal	18.5 - 24.9
-         Overweight	25.0 - 29.9
-         Obese Class I	30.0 - 34.9
-         Obese Class II	35.0 - 39.9
-         Obese Class III	>= 40.0*/
 
         public void run()
         {
@@ -47,6 +46,8 @@ namespace ConsoleAppProject.App02
                 GetImperialBMI();
                 BMImessage = GetBMIMessage();
                 Console.WriteLine(BMImessage);
+                DisplayBAMEMessage();
+
                 //Console.Write(Math.Round(bmi,2));
             }
             if (choice == "2")
@@ -56,6 +57,7 @@ namespace ConsoleAppProject.App02
                 GetMetricBMI();
                 BMImessage = GetBMIMessage();
                 Console.WriteLine(BMImessage);
+                DisplayBAMEMessage();
                 //Console.Write(Math.Round(bmi, 2));
             }
 
@@ -75,7 +77,12 @@ namespace ConsoleAppProject.App02
             bmi = (kilograms / (metres * metres));
         }
 
-
+        public void DisplayBAMEMessage()
+        {
+            Console.WriteLine("\n if you are Black, Asian or other minority ethnic groups, " +
+                " you have a higher risk, Adults at 23.0 or more are at increased risk," +
+                " Adults at 27.5 or more are at high risk.");
+        }
         private static string DisplayMenu(string prompt)
         {
             Console.WriteLine();
@@ -91,18 +98,18 @@ namespace ConsoleAppProject.App02
         private void GetImperialWeight()
         {
             
-            Console.Write("Enter weight in stones: ");
+            Console.Write(" Enter weight in stones: ");
             while (!int.TryParse(Console.ReadLine(), out stones) || stones < 0)
             {
-                DisplayErrorMessage("Invalid input. Please enter a valid positive number for stones.");
-                Console.Write("Enter weight in stones: ");
+                DisplayErrorMessage(" Invalid input. Please enter a valid positive number for stones.");
+                Console.Write(" Enter weight in stones: ");
             }
 
-            Console.WriteLine("Enter weight in pounds: ");
+            Console.Write(" Enter weight in pounds: ");
             while (!double.TryParse(Console.ReadLine(), out pounds) || pounds < 0 || pounds >= 14)
             {
-                DisplayErrorMessage("Invalid input. Please enter a valid positive number less than 14 for pounds.");
-                Console.Write("Enter weight in pounds: ");
+                DisplayErrorMessage(" Invalid input. Please enter a valid positive number less than 14 for pounds.");
+                Console.Write(" Enter weight in pounds: ");
             }
 
             
@@ -145,18 +152,18 @@ namespace ConsoleAppProject.App02
         private void GetImperialHeight()
         {
             
-            Console.Write("Enter height in feet: ");
+            Console.Write(" Enter height in feet: ");
             while (!int.TryParse(Console.ReadLine(), out feet) || feet < 0)
             {
-                DisplayErrorMessage("Invalid input. Please enter a valid positive number for feet.");
-                Console.Write("Enter height in feet: ");
+                DisplayErrorMessage(" Invalid input. Please enter a valid positive number for feet.");
+                Console.Write(" Enter height in feet: ");
             }
 
-            Console.WriteLine("Enter height in inches: ");
+            Console.Write(" Enter height in inches: ");
             while (!double.TryParse(Console.ReadLine(), out inches) || inches < 0 || inches >= 12)
             {
-                DisplayErrorMessage("Invalid input. Please enter a valid positive number less than 12 for inches.");
-                Console.Write("Enter height in inches: ");
+                DisplayErrorMessage(" Invalid input. Please enter a valid positive number less than 12 for inches.");
+                Console.Write(" Enter height in inches: ");
             }
 
             
@@ -165,11 +172,11 @@ namespace ConsoleAppProject.App02
         private void GetMetricWeight()
         {
             
-            Console.Write("Enter weight in Kilograms: ");
+            Console.Write(" Enter weight in Kilograms: ");
             while (!double.TryParse(Console.ReadLine(), out kilograms) || kilograms < 1)
             {
-                DisplayErrorMessage("Invalid input. Please enter a valid positive number for Kilograms.");
-                Console.Write("Enter weight in Kilograms: ");
+                DisplayErrorMessage(" Invalid input. Please enter a valid positive number for Kilograms.");
+                Console.Write(" Enter weight in Kilograms: ");
             }
             //return kilograms;
         }
@@ -177,11 +184,11 @@ namespace ConsoleAppProject.App02
         private void GetMetricHeight()
         {
            
-            Console.Write("Enter Height in Metres: ");
+            Console.Write(" Enter Height in Metres: ");
             while (!double.TryParse(Console.ReadLine(), out metres) || metres < 1)
             {
-                DisplayErrorMessage("Invalid input. Please enter a valid positive number for Kilograms.");
-                Console.Write("Enter Height in Metres: ");
+                DisplayErrorMessage(" Invalid input. Please enter a valid positive number for Kilograms.");
+                Console.Write(" Enter Height in Metres: ");
             }
             //return metres;
 
