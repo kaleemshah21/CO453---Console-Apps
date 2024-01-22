@@ -12,6 +12,12 @@ namespace ConsoleAppProject.App02
     public class BMI
     {
         public double weight, height, bmi;
+        public double kilograms;
+        public int stones;
+        public double pounds;
+        public int feet;
+        public double inches;
+        public double metres;
         public string choice;
         public void run()
         {
@@ -19,17 +25,17 @@ namespace ConsoleAppProject.App02
             choice = DisplayMenu(" Pick which units you would like to work with: ");
             if (choice == "1")
             {
-                weight = GetImperialWeight();
-                height = GetImperialHeight();
+                GetImperialWeight();
+                GetImperialHeight();
                 GetImperialBMI();
-                //Console.Write(Math.Round(bmi,2));
+                Console.Write(Math.Round(bmi,2));
             }
             if (choice == "2")
             {
-                weight = GetMetricWeight();
-                height = GetMetricHeight();
+                GetMetricWeight();
+                GetMetricHeight();
                 GetMetricBMI();
-                //Console.Write(Math.Round(bmi, 2));
+                Console.Write(Math.Round(bmi, 2));
             }
 
         }
@@ -37,13 +43,15 @@ namespace ConsoleAppProject.App02
         private void GetImperialBMI()
         {
             //BMI = (weight in pounds) x 703 / (height in inches)2
-            bmi = (((weight) * 703)) / ((height) * (height));
+            pounds = (stones * 14) + pounds;
+            inches = (feet * 12) + inches;
+            bmi = (((pounds) * 703)) / ((inches) * (inches));
         }
 
         private void GetMetricBMI()
         {
             //BMI = (weight in kg) / (height in metres)2
-            bmi = (weight / (height * height));
+            bmi = (kilograms / (metres * metres));
         }
 
 
@@ -59,11 +67,11 @@ namespace ConsoleAppProject.App02
             return choice;
         }
 
-        private double GetImperialWeight()
+        private void GetImperialWeight()
         {
-            double pounds,stones;
+            
             Console.Write("Enter weight in stones: ");
-            while (!double.TryParse(Console.ReadLine(), out stones) || stones < 0)
+            while (!int.TryParse(Console.ReadLine(), out stones) || stones < 0)
             {
                 DisplayErrorMessage("Invalid input. Please enter a valid positive number for stones.");
                 Console.Write("Enter weight in stones: ");
@@ -76,14 +84,14 @@ namespace ConsoleAppProject.App02
                 Console.Write("Enter weight in pounds: ");
             }
 
-            return (stones * 14) + pounds;
+            
         }
 
-        static double GetImperialHeight()
+        private void GetImperialHeight()
         {
-            double feet,inches;
+            
             Console.Write("Enter height in feet: ");
-            while (!double.TryParse(Console.ReadLine(), out feet) || feet < 0)
+            while (!int.TryParse(Console.ReadLine(), out feet) || feet < 0)
             {
                 DisplayErrorMessage("Invalid input. Please enter a valid positive number for feet.");
                 Console.Write("Enter height in feet: ");
@@ -96,31 +104,31 @@ namespace ConsoleAppProject.App02
                 Console.Write("Enter height in inches: ");
             }
 
-            return (feet * 12) + inches;
+            
         }
 
-        static double GetMetricWeight()
+        private void GetMetricWeight()
         {
-            double kilograms;
+            
             Console.Write("Enter weight in Kilograms: ");
             while (!double.TryParse(Console.ReadLine(), out kilograms) || kilograms < 1)
             {
                 DisplayErrorMessage("Invalid input. Please enter a valid positive number for Kilograms.");
                 Console.Write("Enter weight in Kilograms: ");
             }
-            return kilograms;
+            //return kilograms;
         }
 
-        static double GetMetricHeight()
+        private void GetMetricHeight()
         {
-            double metres;
+           
             Console.Write("Enter Height in Metres: ");
             while (!double.TryParse(Console.ReadLine(), out metres) || metres < 1)
             {
                 DisplayErrorMessage("Invalid input. Please enter a valid positive number for Kilograms.");
                 Console.Write("Enter Height in Metres: ");
             }
-            return metres;
+            //return metres;
 
         }
 
