@@ -18,31 +18,38 @@ namespace ConsoleAppProject.App01
 
     public class DistanceConverter
     {
+        /*declares variables, some have getters
+         and setters so that the web app can
+        get the variables. Constants for
+        conversions are also declared*/
         public DistanceUnits FromUnit { get; set; }
         public DistanceUnits ToUnit { get; set; }
 
         public double FromDistance { get; set; }
         public double ToDistance { get; set; }
 
-        public const string FEET = "Feet";
-        public const string METRES = "Metres";
-        public const string MILES = "Miles";
-
         public const int FEET_IN_MILES = 5280;
         public const double METRES_IN_MILES = 1609.34;
         public const double FEET_IN_METRES = 3.28084;
 
+        /*constructor to give default values to
+         FromUnit and ToUnit*/
         public DistanceConverter()
         {
             FromUnit = DistanceUnits.Miles;
             ToUnit = DistanceUnits.Feet;
         }
 
+        /*calls the ConvertDistance method*/
         public void run()
         {
             ConvertDistance();
         }
 
+        /*outputs the headings, it then calls
+         the select unit method and sets the
+        returned value to FromUnit and 
+        ToUnit*/
         private void ConvertDistance()
         {
             
@@ -59,6 +66,10 @@ namespace ConsoleAppProject.App01
             
         }
 
+        /*Displays the prompt that has been passed
+         through, it then validates the users input
+        and asks them to re-enter if invalid, it then
+        returns the unit of choice*/
         private DistanceUnits SelectUnit(string prompt)
         {
             DistanceUnits unit;
@@ -79,20 +90,16 @@ namespace ConsoleAppProject.App01
 
             return unit;
 
-            /*string choice = DisplayChoices(prompt);
-            DistanceUnits unit = ExecuteChoice(choice);
-            Console.WriteLine($"\n You have chosen {unit}");
-            return unit;*/
         }
 
+        /*Displays the possible choices of units,
+         it then asks the user to enter their choice*/
         private static string DisplayChoices(string prompt)
         {
-
-            //changed from FEET, to DistanceUnits.Feet from enum class
             Console.WriteLine();
-            Console.WriteLine($" 1. {DistanceUnits.Feet}");
+            Console.WriteLine($" 1. {DistanceUnits.Feet}  ");
             Console.WriteLine($" 2. {DistanceUnits.Metres}");
-            Console.WriteLine($" 3. {DistanceUnits.Miles}");
+            Console.WriteLine($" 3. {DistanceUnits.Miles} ");
             Console.WriteLine();
 
             Console.Write(prompt);
@@ -100,7 +107,9 @@ namespace ConsoleAppProject.App01
             return choice;
         }
 
-        //added a do while and try catch loop to catch any invalid entries
+        /*asks the user to enter the distance, it 
+         then validates the input and returns the
+        result*/
         private double InputDistance(string prompt)
         {
             double result = 0.0;
@@ -125,6 +134,8 @@ namespace ConsoleAppProject.App01
 
         }
 
+        /*checks the choice that the user entered
+         and returns the corresponding unit*/
         private static DistanceUnits ExecuteChoice(string choice)
         {
             if (choice.Equals("1"))
