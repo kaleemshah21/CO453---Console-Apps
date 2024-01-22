@@ -1,5 +1,6 @@
 ﻿using ConsoleAppProject.App01;
 using System;
+using System.Text;
 
 namespace ConsoleAppProject.App02
 {
@@ -19,6 +20,22 @@ namespace ConsoleAppProject.App02
         public double inches;
         public double metres;
         public string choice;
+        public string BMImessage;
+
+        const double Underweight = 18.5;
+        const double Normal = 24.9;
+        const double Overweight = 29.9;
+        const double ObeseCI = 34.9;
+        const double ObeseCII = 39.9;
+        const double ObeseCIII = 40;
+
+        /* Underweight< 18.50
+         Normal	18.5 - 24.9
+         Overweight	25.0 - 29.9
+         Obese Class I	30.0 - 34.9
+         Obese Class II	35.0 - 39.9
+         Obese Class III	>= 40.0*/
+
         public void run()
         {
             OutputHeading();
@@ -28,14 +45,18 @@ namespace ConsoleAppProject.App02
                 GetImperialWeight();
                 GetImperialHeight();
                 GetImperialBMI();
-                Console.Write(Math.Round(bmi,2));
+                BMImessage = GetBMIMessage();
+                Console.WriteLine(BMImessage);
+                //Console.Write(Math.Round(bmi,2));
             }
             if (choice == "2")
             {
                 GetMetricWeight();
                 GetMetricHeight();
                 GetMetricBMI();
-                Console.Write(Math.Round(bmi, 2));
+                BMImessage = GetBMIMessage();
+                Console.WriteLine(BMImessage);
+                //Console.Write(Math.Round(bmi, 2));
             }
 
         }
@@ -87,6 +108,40 @@ namespace ConsoleAppProject.App02
             
         }
 
+        public string GetBMIMessage()
+        {
+            StringBuilder message = new StringBuilder();
+            if (bmi < Underweight)
+            {
+                message.Append($" Your BMI is {bmi:0.00}," +
+                    $"You are underweight");
+            }
+            else if (bmi < Normal)
+            {
+                message.Append($" Your BMI is {bmi:0.00}," +
+                    $"You are normal");
+            }
+            else if(bmi < Overweight){
+                message.Append($" Your BMI is {bmi:0.00}," +
+                    $"You are overweight");
+            }
+            else if (bmi < ObeseCI)
+            {
+                message.Append($" Your BMI is {bmi:0.00}," +
+                    $"You are Obese Class 1");
+            }
+            else if (bmi < ObeseCII)
+            {
+                message.Append($" Your BMI is {bmi:0.00}," +
+                    $"You are Obese Class 2");
+            }
+            else
+            {
+                message.Append($" Your BMI is {bmi:0.00}," +
+                    $"You are Obese Class 3");
+            }
+            return message.ToString();
+        }
         private void GetImperialHeight()
         {
             
