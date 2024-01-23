@@ -152,36 +152,17 @@ namespace ConsoleAppProject.App02
         public string GetBMIMessage()
         {
             StringBuilder message = new StringBuilder();
-            if (Bmi < Underweight)
-            {
-                message.Append($" Your BMI is {Bmi:0.00}," +
-                    $"You are underweight");
-            }
-            else if (Bmi < Normal)
-            {
-                message.Append($" Your BMI is {Bmi:0.00}," +
-                    $"You are normal");
-            }
-            else if(Bmi < Overweight){
-                message.Append($" Your BMI is {Bmi:0.00}," +
-                    $"You are overweight");
-            }
-            else if (Bmi < ObeseCI)
-            {
-                message.Append($" Your BMI is {Bmi:0.00}," +
-                    $"You are Obese Class 1");
-            }
-            else if (Bmi < ObeseCII)
-            {
-                message.Append($" Your BMI is {Bmi:0.00}," +
-                    $"You are Obese Class 2");
-            }
-            else
-            {
-                message.Append($" Your BMI is {Bmi:0.00}," +
-                    $"You are Obese Class 3");
-            }
+            string[] categories = { "Underweight", "Normal", "Overweight", "Obese Class 1", "Obese Class 2", "Obese Class 3" };
+            double[] thresholds = { Underweight, Normal, Overweight, ObeseCI, ObeseCII, double.MaxValue };
+
+            int index = Array.FindIndex(thresholds, t => Bmi < t);
+
+            message.Append($" Your BMI is {Bmi:0.00}, You are {categories[index]}");
+
             return message.ToString();
+
+
+            
         }
 
         /*prompts the user to enter height in feet and inches
