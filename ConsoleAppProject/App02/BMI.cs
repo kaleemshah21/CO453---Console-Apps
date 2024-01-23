@@ -71,27 +71,26 @@ namespace ConsoleAppProject.App02
 
             if (choice == 1)
             {
-                GetImperialWeight();
-                GetImperialHeight();
-                GetImperialBMI();
-                BMImessage = GetBMIMessage();
-                Console.WriteLine(BMImessage);
-                string bameMessage = DisplayBAMEMessage();
-                Console.WriteLine(bameMessage);
-                
+                ProcessInput(GetImperialWeight, GetImperialHeight, GetImperialBMI);  
             }
             if (choice == 2)
             {
-                GetMetricWeight();
-                GetMetricHeight();
-                GetMetricBMI();
-                BMImessage = GetBMIMessage();
-                Console.WriteLine(BMImessage);
-                string bameMessage = DisplayBAMEMessage();
-                Console.WriteLine(bameMessage);
-                
+                ProcessInput(GetMetricWeight, GetMetricHeight, GetMetricBMI);
             }
 
+            Console.WriteLine(GetBMIMessage());
+            Console.WriteLine(DisplayBAMEMessage());
+
+        }
+
+        /*method to call different methods based on the method 
+          that is passed through, changed to reduce code
+          duplication.*/
+        void ProcessInput(Action getWeight, Action getHeight, Action getBMI)
+        {
+            getWeight();
+            getHeight();
+            getBMI();
         }
 
         /*calculates bmi with imperial units*/
