@@ -50,7 +50,7 @@ namespace ConsoleAppProject.App01
          the select unit method and sets the
         returned value to FromUnit and 
         ToUnit*/
-        private void ConvertDistance()
+        public void ConvertDistance()
         {
             
             OutputHeading();
@@ -163,27 +163,27 @@ namespace ConsoleAppProject.App01
         {
             if (FromUnit == DistanceUnits.Miles && ToUnit == DistanceUnits.Feet)
             {
-                ToDistance = Math.Round(FromDistance * FEET_IN_MILES, 2);
+                ToDistance = Math.Round(FromDistance * FEET_IN_MILES, 5);
             }
             else if (FromUnit == DistanceUnits.Miles && ToUnit == DistanceUnits.Metres)
             {
-                ToDistance = Math.Round(FromDistance * METRES_IN_MILES, 2);
+                ToDistance = Math.Round(FromDistance * METRES_IN_MILES, 5);
             }
             else if (FromUnit == DistanceUnits.Feet && ToUnit == DistanceUnits.Miles)
             {
-                ToDistance = Math.Round(FromDistance / FEET_IN_MILES, 2);
+                ToDistance = Math.Round(FromDistance / FEET_IN_MILES, 5);
             }
             else if (FromUnit == DistanceUnits.Feet && ToUnit == DistanceUnits.Metres)
             {
-                ToDistance = Math.Round(FromDistance / FEET_IN_METRES, 2);
+                ToDistance = Math.Round(FromDistance / FEET_IN_METRES, 5);
             }
             else if (FromUnit == DistanceUnits.Metres && ToUnit == DistanceUnits.Miles)
             {
-                ToDistance = Math.Round(FromDistance / METRES_IN_MILES, 2);
+                ToDistance = Math.Round(FromDistance / METRES_IN_MILES, 5);
             }
             else if (FromUnit == DistanceUnits.Metres && ToUnit == DistanceUnits.Feet)
             {
-                ToDistance = Math.Round(FromDistance * FEET_IN_METRES, 2);
+                ToDistance = Math.Round(FromDistance * FEET_IN_METRES, 5);
             }
             else if (FromUnit == ToUnit)
             {
