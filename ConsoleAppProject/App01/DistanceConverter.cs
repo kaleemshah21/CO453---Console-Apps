@@ -121,7 +121,16 @@ namespace ConsoleAppProject.App01
                 try
                 {
                     result = Convert.ToDouble(value);
-                    break;
+                    if(result < 0)
+                    {
+                        error = true;
+                        Console.WriteLine(" invalid entry");
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    //break;
                 }
                 catch (Exception e)
                 {
