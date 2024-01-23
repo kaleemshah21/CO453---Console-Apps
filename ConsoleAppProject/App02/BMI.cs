@@ -60,9 +60,15 @@ namespace ConsoleAppProject.App02
             the bmi, which is then outputted as well as the BAME 
             message, the same for choice 2 except the methods are
             different.*/
+            string[] choices = {
+                $"Imperial Units",
+                $"Metric Units"   
+            };
 
-            OutputHeading();
-            choice = DisplayMenu(" Pick which units you would like to work with: ");
+            ConsoleHelper.OutputHeading("BMI Calculator");
+            int choice = ConsoleHelper.SelectChoice(choices, " Pick which units you would like to work with: ");
+            
+
             if (choice == 1)
             {
                 GetImperialWeight();
@@ -112,25 +118,6 @@ namespace ConsoleAppProject.App02
                 " Adults at 27.5 or more are at high risk.");
             return bameMessage;
         }
-        /*displays the menu and validates user input, then
-         returns the choice once validated.*/
-        private static int DisplayMenu(string prompt)
-        {
-            Console.WriteLine();
-            Console.WriteLine(" 1. Imperial Units");
-            Console.WriteLine(" 2. Metric Units");
-            Console.WriteLine();
-
-            int menuChoice;
-
-            Console.Write(prompt);
-            while (!int.TryParse(Console.ReadLine(), out menuChoice) || menuChoice > 2 || menuChoice < 1)
-            {
-                DisplayErrorMessage(" Invalid input. Please enter a valid choice.");
-                Console.Write(prompt);
-            }
-            return menuChoice;
-        }
 
         /*prompts user to enter weight in stone and pounds,
          it then validates the input with a while loop and 
@@ -143,7 +130,7 @@ namespace ConsoleAppProject.App02
             Console.Write(" Enter weight in stones: ");
             while (!int.TryParse(Console.ReadLine(), out StoneInput) || StoneInput < 0)
             {
-                DisplayErrorMessage(" Invalid input. Please enter a valid positive number for stones.");
+                ConsoleHelper.DisplayErrorMessage(" Invalid input. Please enter a valid positive number for stones.");
                 Console.Write(" Enter weight in stones: ");
             }
             Stones = StoneInput;
@@ -151,7 +138,7 @@ namespace ConsoleAppProject.App02
             Console.Write(" Enter weight in pounds: ");
             while (!double.TryParse(Console.ReadLine(), out PoundsInput) || PoundsInput < 0 || PoundsInput >= 14)
             {
-                DisplayErrorMessage(" Invalid input. Please enter a valid positive number less than 14 for pounds.");
+                ConsoleHelper.DisplayErrorMessage(" Invalid input. Please enter a valid positive number less than 14 for pounds.");
                 Console.Write(" Enter weight in pounds: ");
             }
             Pounds = PoundsInput;
@@ -209,7 +196,7 @@ namespace ConsoleAppProject.App02
             Console.Write(" Enter height in feet: ");
             while (!int.TryParse(Console.ReadLine(), out FeetInput) || FeetInput < 0)
             {
-                DisplayErrorMessage(" Invalid input. Please enter a valid positive number for feet.");
+                ConsoleHelper.DisplayErrorMessage(" Invalid input. Please enter a valid positive number for feet.");
                 Console.Write(" Enter height in feet: ");
             }
             Feet = FeetInput;
@@ -217,7 +204,7 @@ namespace ConsoleAppProject.App02
             Console.Write(" Enter height in inches: ");
             while (!double.TryParse(Console.ReadLine(), out InchesInput) || InchesInput < 0 || InchesInput >= 12)
             {
-                DisplayErrorMessage(" Invalid input. Please enter a valid positive number less than 12 for inches.");
+                ConsoleHelper.DisplayErrorMessage(" Invalid input. Please enter a valid positive number less than 12 for inches.");
                 Console.Write(" Enter height in inches: ");
                 
             }
@@ -236,7 +223,7 @@ namespace ConsoleAppProject.App02
             Console.Write(" Enter weight in Kilograms: ");
             while (!double.TryParse(Console.ReadLine(), out KilogramsInput) || KilogramsInput < 1)
             {
-                DisplayErrorMessage(" Invalid input. Please enter a valid positive number for Kilograms.");
+                ConsoleHelper.DisplayErrorMessage(" Invalid input. Please enter a valid positive number for Kilograms.");
                 Console.Write(" Enter weight in Kilograms: ");
             }
             Kilograms = KilogramsInput;
@@ -253,30 +240,14 @@ namespace ConsoleAppProject.App02
             Console.Write(" Enter Height in Metres: ");
             while (!double.TryParse(Console.ReadLine(), out MetresInput) || MetresInput < 1)
             {
-                DisplayErrorMessage(" Invalid input. Please enter a valid positive number for Kilograms.");
+                ConsoleHelper.DisplayErrorMessage(" Invalid input. Please enter a valid positive number for Kilograms.");
                 Console.Write(" Enter Height in Metres: ");
             }
             Metres = MetresInput;
 
         }
         
-        /*this method is used to Display a message that 
-         has been passed through.*/
-        static void DisplayErrorMessage(string message)
-        {
-            Console.WriteLine(message);
-        }
 
-        /*outputs the heading that introduces the program*/
-        private void OutputHeading()
-        {
-            Console.WriteLine(" ");
-            Console.WriteLine(" -------------------------");
-            Console.WriteLine("      BMI Calculator      ");
-            Console.WriteLine("      By Kaleem Shah      ");
-            Console.WriteLine(" -------------------------");
-            Console.WriteLine(" ");
-        }
 
     }
 

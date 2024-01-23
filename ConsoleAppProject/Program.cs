@@ -21,7 +21,7 @@ namespace ConsoleAppProject
             int choice;
             Console.ForegroundColor = ConsoleColor.Yellow;
             
-            OutputHeading();
+            ConsoleHelper.OutputHeading("BNU CO453 Applications Programming 2022-2023");
             choice = DisplayMenu(" Pick which app you would like to use: ");
 
             /*if statements to different menu options*/
@@ -72,13 +72,6 @@ namespace ConsoleAppProject
         }
 
         /*outputs the heading of the program*/
-        private static void OutputHeading()
-        {
-            Console.WriteLine();
-            Console.WriteLine(" =================================================");
-            Console.WriteLine("   BNU CO453 Applications Programming 2022-2023!  ");
-            Console.WriteLine(" =================================================");
-            Console.WriteLine();
-        }
+        
     }
 }

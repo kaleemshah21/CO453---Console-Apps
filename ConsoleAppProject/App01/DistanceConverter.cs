@@ -66,46 +66,42 @@ namespace ConsoleAppProject.App01
             
         }
 
-        /*Displays the prompt that has been passed
-         through, it then validates the users input
-        and asks them to re-enter if invalid, it then
-        returns the unit of choice*/
         private DistanceUnits SelectUnit(string prompt)
         {
-            DistanceUnits unit;
-            do
-            {
-                string choice = DisplayChoices(prompt);
-                unit = ExecuteChoice(choice);
+            string[] choices = {
+                $"{DistanceUnits.Feet}",
+                $"{DistanceUnits.Metres}",
+                $"{DistanceUnits.Miles}"
+            };
 
-                if (unit == DistanceUnits.NoUnit)
-                {
-                    Console.Write(" Invalid Entry, Please Re-Enter ");
-                }
-                else
-                {
-                    Console.WriteLine($"\n You have chosen {unit}");
-                }
-            } while (unit == DistanceUnits.NoUnit);
+            Console.WriteLine();
+            int choiceNo = ConsoleHelper.SelectChoice(choices, prompt);
+
+
+            DistanceUnits unit;
+            switch (choiceNo)
+            {
+                case 1:
+                    unit = DistanceUnits.Feet;
+                    break;
+                case 2:
+                    unit = DistanceUnits.Metres;
+                    break;
+                case 3:
+                    unit = DistanceUnits.Miles;
+                    break;
+                default:
+                    unit = DistanceUnits.NoUnit;
+                    break;
+            }
+
+            
+            Console.WriteLine($"\n You have chosen {unit}");
+            
 
             return unit;
-
         }
 
-        /*Displays the possible choices of units,
-         it then asks the user to enter their choice*/
-        private static string DisplayChoices(string prompt)
-        {
-            Console.WriteLine();
-            Console.WriteLine($" 1. {DistanceUnits.Feet}  ");
-            Console.WriteLine($" 2. {DistanceUnits.Metres}");
-            Console.WriteLine($" 3. {DistanceUnits.Miles} ");
-            Console.WriteLine();
-
-            Console.Write(prompt);
-            string choice = Console.ReadLine();
-            return choice;
-        }
 
         /*asks the user to enter the distance, it 
          then validates the input and returns the
@@ -141,28 +137,6 @@ namespace ConsoleAppProject.App01
             while (error == true);
             return result;
 
-        }
-
-        /*checks the choice that the user entered
-         and returns the corresponding unit*/
-        private static DistanceUnits ExecuteChoice(string choice)
-        {
-            if (choice.Equals("1"))
-            {
-                return DistanceUnits.Feet;
-            }
-            else if (choice.Equals("2"))
-            {
-                return DistanceUnits.Metres;
-            }
-            else if (choice.Equals("3"))
-            {
-                return DistanceUnits.Miles;
-            }
-            
-            return DistanceUnits.NoUnit;
-            
-             
         }
 
         /*this method calculates the todistance based
