@@ -94,14 +94,14 @@ namespace ConsoleAppProject.App02
             //BMI = (weight in pounds) x 703 / (height in inches)2
             Pounds = (Stones * 14) + Pounds;
             Inches = (Feet * 12) + Inches;
-            Bmi = (((Pounds) * 703)) / ((Inches) * (Inches));
+            Bmi = Math.Round((((Pounds) * 703)) / ((Inches) * (Inches)),2);
         }
 
         /*calculates bmi with metric units*/
         public void GetMetricBMI()
         {
             //BMI = (weight in kg) / (height in metres)2
-            Bmi = (Kilograms / (Metres * Metres));
+            Bmi = Math.Round((Kilograms / (Metres * Metres)),2);
         }
 
         //returns the BAME message
