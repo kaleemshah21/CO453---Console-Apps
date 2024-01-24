@@ -45,17 +45,34 @@ namespace ConsoleApps.Test
         [TestMethod]
         public void TestCalculateMean()
         {
-            int[] statsMarks = new int[]
-            {
-                10,20,30,40,50,60,70,80,90,100
-            };
-
             converter.Marks = statsMarks;
             double expectedMean = 55.0;
 
             converter.CalculateStats();
 
             Assert.AreEqual(expectedMean, converter.Mean);
+        }
+
+        [TestMethod]
+        public void TestCalculateMin()
+        {
+            converter.Marks = statsMarks;
+            double expectedMin = 10;
+
+            converter.CalculateStats();
+
+            Assert.AreEqual(expectedMin, converter.Minimum);
+        }
+
+        [TestMethod]
+        public void TestCalculateMax()
+        {
+            converter.Marks = statsMarks;
+            double expectedMin = 100;
+
+            converter.CalculateStats();
+
+            Assert.AreEqual(expectedMin, converter.Maximum);
         }
 
 

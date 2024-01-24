@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Reflection.PortableExecutable;
 using ConsoleAppProject.Helpers;
 
 namespace ConsoleAppProject.App03
@@ -83,9 +84,14 @@ namespace ConsoleAppProject.App03
          students*/
         public void CalculateStats()
         {
+            Minimum = Marks[0];
+            Maximum = Marks[0];
+
             double total = 0;
             foreach(int mark in Marks)
             {
+                if (mark > Maximum) Maximum = mark;
+                if (mark < Minimum) Minimum = mark;
                 total = total + mark;
             }
             Mean = total / Marks.Length;
