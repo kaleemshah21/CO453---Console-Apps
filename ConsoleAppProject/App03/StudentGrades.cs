@@ -36,11 +36,13 @@ namespace ConsoleAppProject.App03
 
 
 
+        ///creates a grade profile of length for all the grades
+        ///as the num of grades.A in the enum class
+        ///is 5 so +1 is 6 so can get all 6 grades,
+        ///it then sets an array of length of the
+        ///students., also creates an array of students
         public StudentGrades()
         {
-
-            
-
             Students = new string[]
             {
                 "Kaleem", "John", "Husnain",
@@ -49,17 +51,10 @@ namespace ConsoleAppProject.App03
                 "Liam"
             };
 
-            ///creates a grade profile of length for all the grades
-            ///as the num of grades.A in the enum class
-            ///is 5 so +1 is 6 so can get all 6 grades,
-            ///it then sets an array of length of the
-            ///students.
-
             GradeProfile = new int[(int)Grades.A + 1];
             Marks = new int[Students.Length];
 
         }
-
         public void Run()
         {
             string[] choices = {
@@ -139,7 +134,9 @@ namespace ConsoleAppProject.App03
             Console.WriteLine();
         }
 
-
+        /*outputs the stats that have been
+         calculated by the CalculateStats
+         method*/
         public void OutputStats()
         {
             
