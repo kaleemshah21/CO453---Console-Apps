@@ -16,6 +16,14 @@ namespace ConsoleAppProject
     /// </summary>
     public static class Program
     {
+        public static BMI BMI
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public static void Main(string[] args)
         {
             int choice;
