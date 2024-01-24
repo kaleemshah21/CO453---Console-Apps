@@ -61,7 +61,7 @@ namespace ConsoleAppProject
             Console.WriteLine(" │                                 │ ");
             Console.WriteLine(" │ 1. App01                        │ ");
             Console.WriteLine(" │ 2. App02                        │ ");
-            Console.WriteLine(" │ 2. App03 (not yet implemented)  │ ");
+            Console.WriteLine(" │ 2. App03                        │ ");
             Console.WriteLine(" │ 2. App04 (not yet implemented)  │ ");
             Console.WriteLine(" │ 2. App05 (not yet implemented)  │ ");
             Console.WriteLine(" └─────────────────────────────────┘ ");
