@@ -12,8 +12,11 @@ namespace ConsoleAppProject.App03
     /// </summary>
     public class StudentGrades
     {
-        //constants
-        public const int LowestMark = 0;
+        
+        
+
+    //constants
+    public const int LowestMark = 0;
         public const int LowestGradeD = 40;
         public const int LowestGradeC = 50;
         public const int LowestGradeB = 60;
@@ -28,8 +31,15 @@ namespace ConsoleAppProject.App03
         public int Minimum {  get; set; }
         public int Maximum { get; set; }
 
+        public int choice { get; set; }
+
+
+
         public StudentGrades()
         {
+
+            
+
             Students = new string[]
             {
                 "Kaleem", "John", "Husnain",
@@ -49,6 +59,40 @@ namespace ConsoleAppProject.App03
 
         }
 
+        public void Run()
+        {
+            string[] choices = {
+                $"Input Marks",
+                $"Output Marks",
+                $"Output Stats",
+                $"Output Grade Profile",
+                $"Quit"
+            };
+            do
+            {
+                ConsoleHelper.OutputHeading("BMI Calculator");
+                choice = ConsoleHelper.SelectChoice(choices, "Pick which units you would like to work with: ");
+
+                if (choice == 1)
+                {
+                    InputMarks();
+                }
+                else if(choice == 2)
+                {
+                    OutputMarks();
+                }
+                else if (choice == 3)
+                {
+                    OutputStats();
+                }
+                else if (choice == 4)
+                {
+                    OutputGradeProfile();
+                }
+
+            } while (choice != 5);
+        }
+
         /*Input a mark between 0-100 for
          each student and store it in the 
          Marks array*/
@@ -60,6 +104,11 @@ namespace ConsoleAppProject.App03
         /*List all the students and displays
          their name and current mark*/
         public void OutputMarks()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OutputStats()
         {
             throw new NotImplementedException();
         }
@@ -121,6 +170,20 @@ namespace ConsoleAppProject.App03
                 Grades grade = ConvertToGrade(mark);
                 GradeProfile[(int)grade]++;
             }
+        }
+
+        private void OutputGradeProfile()
+        {
+            Grades grade = Grades.F;
+            Console.WriteLine();
+
+            foreach(int count in GradeProfile)
+            {
+                int percentage = count * 100 / Marks.Length;
+                Console.WriteLine($"Grade {grade} {percentage}% Count {count}");
+                grade++;
+            }
+            Console.WriteLine();
         }
 
     }

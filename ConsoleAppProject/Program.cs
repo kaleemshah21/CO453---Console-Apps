@@ -43,6 +43,11 @@ namespace ConsoleAppProject
                 BMI bmiCalculator = new BMI();
                 bmiCalculator.run();
             }
+            else if (choice == 3)
+            {
+                StudentGrades studentGrades = new StudentGrades();
+                studentGrades.Run();
+            }
 
         }
 
@@ -64,7 +69,7 @@ namespace ConsoleAppProject
 
             int menuChoice;
             Console.Write(prompt);
-            while (!int.TryParse(Console.ReadLine(), out menuChoice) || menuChoice > 2 || menuChoice < 1)
+            while (!int.TryParse(Console.ReadLine(), out menuChoice) || menuChoice > 3 || menuChoice < 1)
             {
                 DisplayErrorMessage(" Invalid input. Please enter a valid choice.");
                 Console.Write(prompt);
