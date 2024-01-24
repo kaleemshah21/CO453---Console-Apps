@@ -59,7 +59,14 @@ namespace ConsoleAppProject.App03
          is first class*/
         public Grades ConvertToGrade(int mark)
         {
-            throw new NotImplementedException();
+            if(mark >= 0 && mark < 40)
+            {
+                return Grades.F;
+            }
+            else
+            {
+                return Grades.D;
+            }
         }
 
         /*Calculates and displays the min,

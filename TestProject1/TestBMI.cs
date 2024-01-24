@@ -1,6 +1,6 @@
 using ConsoleAppProject.App02;
 using System;
-namespace TestProject1
+namespace ConsoleApps.Test
 {
     [TestClass]
     public class TestBmi

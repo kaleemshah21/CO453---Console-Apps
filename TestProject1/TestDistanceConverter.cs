@@ -1,5 +1,5 @@
 using ConsoleAppProject.App01;
-namespace TestProject1
+namespace ConsoleApps.Test
 {
     [TestClass]
     public class TestDistanceConverter
