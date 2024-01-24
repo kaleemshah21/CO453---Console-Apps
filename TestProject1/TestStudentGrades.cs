@@ -75,6 +75,25 @@ namespace ConsoleApps.Test
             Assert.AreEqual(expectedMin, converter.Maximum);
         }
 
+        [TestMethod]
+        public void TestGradeProfile()
+        {
+            converter.Marks = statsMarks;
+
+            converter.CalculateGradeProfile();
+
+            converter.CalculateStats();
+            bool expectedProfile = ((converter.GradeProfile[0] == 3) &&
+                         (converter.GradeProfile[1] == 1) &&
+                         (converter.GradeProfile[2] == 1) &&
+                         (converter.GradeProfile[3] == 1) &&
+                         (converter.GradeProfile[4] == 4));
+
+
+            Assert.IsTrue(expectedProfile);
+
+        }
+
 
 
 

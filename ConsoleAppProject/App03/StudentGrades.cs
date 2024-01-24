@@ -69,14 +69,27 @@ namespace ConsoleAppProject.App03
          is first class*/
         public Grades ConvertToGrade(int mark)
         {
-            if(mark >= LowestMark && mark < LowestGradeD)
+            if (mark >= LowestMark && mark < LowestGradeD)
             {
                 return Grades.F;
             }
-            else
+            else if (mark < LowestGradeC)
             {
                 return Grades.D;
             }
+            else if (mark < LowestGradeB)
+            {
+                return Grades.C;
+            }
+            else if (mark < LowestGradeA)
+            {
+                return Grades.B;
+            }
+            else if (mark <= HighestMark)
+            {
+                return Grades.A;
+            }
+            return Grades.F;
         }
 
         /*Calculates and displays the min,
@@ -95,6 +108,19 @@ namespace ConsoleAppProject.App03
                 total = total + mark;
             }
             Mean = total / Marks.Length;
+        }
+
+        public void CalculateGradeProfile()
+        {
+            for(int i = 0; i < GradeProfile.Length; i++)
+            {
+                GradeProfile[i] = 0;
+            }
+            foreach(int mark in Marks)
+            {
+                Grades grade = ConvertToGrade(mark);
+                GradeProfile[(int)grade]++;
+            }
         }
 
     }
