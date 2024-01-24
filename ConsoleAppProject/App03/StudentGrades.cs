@@ -11,6 +11,15 @@ namespace ConsoleAppProject.App03
     /// </summary>
     public class StudentGrades
     {
+        //constants
+        public const int LowestMark = 0;
+        public const int LowestGradeD = 40;
+        public const int LowestGradeC = 50;
+        public const int LowestGradeB = 60;
+        public const int LowestGradeA = 70;
+        public const int HighestMark = 100;
+
+        //properties
         public string[] Students { get; set; }
         public int[] Marks { get; set; }
         public int[] GradeProfile { get; set; }
@@ -59,7 +68,7 @@ namespace ConsoleAppProject.App03
          is first class*/
         public Grades ConvertToGrade(int mark)
         {
-            if(mark >= 0 && mark < 40)
+            if(mark >= LowestMark && mark < LowestGradeD)
             {
                 return Grades.F;
             }
