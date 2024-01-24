@@ -83,7 +83,12 @@ namespace ConsoleAppProject.App03
          students*/
         public void CalculateStats()
         {
-            throw new NotImplementedException();
+            double total = 0;
+            foreach(int mark in Marks)
+            {
+                total = total + mark;
+            }
+            Mean = total / Marks.Length;
         }
 
     }

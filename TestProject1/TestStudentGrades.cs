@@ -11,21 +11,55 @@ namespace ConsoleApps.Test
     [TestClass]
     public class TestStudentGrades
     {
-        private readonly StudentGrades
-                studentGrades = new StudentGrades();
+        private int[] statsMarks;
+        private readonly StudentGrades converter = new StudentGrades();
+        public TestStudentGrades()
+        {
+            statsMarks = new int[]
+            {
+                10,20,30,40,50,60,70,80,90,100
+            };
+        }
+        
 
         [TestMethod]
         public void Convert0ToGradeF()
         {
             Grades expectedGrade = Grades.F;
 
-            Grades actualGrade = studentGrades.ConvertToGrade(0);
+            Grades actualGrade = converter.ConvertToGrade(0);
 
             Assert.AreEqual(expectedGrade, actualGrade);
         }
 
+        [TestMethod]
+        public void Convert39ToGradeF()
+        {
+            Grades expectedGrade = Grades.F;
 
-        
+            Grades actualGrade = converter.ConvertToGrade(39);
+
+            Assert.AreEqual(expectedGrade, actualGrade);
+        }
+
+        [TestMethod]
+        public void TestCalculateMean()
+        {
+            int[] statsMarks = new int[]
+            {
+                10,20,30,40,50,60,70,80,90,100
+            };
+
+            converter.Marks = statsMarks;
+            double expectedMean = 55.0;
+
+            converter.CalculateStats();
+
+            Assert.AreEqual(expectedMean, converter.Mean);
+        }
+
+
+
 
     }
 }
