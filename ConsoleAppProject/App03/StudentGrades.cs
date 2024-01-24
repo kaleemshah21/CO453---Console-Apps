@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Reflection.PortableExecutable;
 using ConsoleAppProject.Helpers;
 
@@ -70,8 +71,8 @@ namespace ConsoleAppProject.App03
             };
             do
             {
-                ConsoleHelper.OutputHeading("BMI Calculator");
-                choice = ConsoleHelper.SelectChoice(choices, "Pick which units you would like to work with: ");
+                ConsoleHelper.OutputHeading("Student Grades");
+                choice = ConsoleHelper.SelectChoice(choices, " Pick an option: ");
 
                 if (choice == 1)
                 {
@@ -83,10 +84,12 @@ namespace ConsoleAppProject.App03
                 }
                 else if (choice == 3)
                 {
+                    CalculateStats();
                     OutputStats();
                 }
                 else if (choice == 4)
                 {
+                    CalculateGradeProfile();
                     OutputGradeProfile();
                 }
 
@@ -98,19 +101,51 @@ namespace ConsoleAppProject.App03
          Marks array*/
         public void InputMarks()
         {
-            throw new NotImplementedException();
+            int currentMark;
+            Console.WriteLine(" Please enter the marks for each student:");
+            for (int i = 0; i < Students.Length; i++)
+            {
+                Console.Write($" Marks for {Students[i]}: ");
+                while (!int.TryParse(Console.ReadLine(), out currentMark) || currentMark < 0 || currentMark > 100)
+                {
+                    ConsoleHelper.DisplayErrorMessage(" Invalid input. Please enter a valid mark between 0 and 100.");
+                    Console.Write($" Marks for {Students[i]}: ");
+                }
+                Marks[i] = currentMark;
+            }
+            Console.WriteLine(" All marks have been inputted");
         }
+
 
         /*List all the students and displays
          their name and current mark*/
         public void OutputMarks()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("\n Student Marks and Grades");
+            Console.WriteLine("----------------------------");
+
+            for (int i = 0; i < Students.Length; i++)
+            {
+               
+                string student = Students[i];
+
+                int mark = Marks[i];
+
+                Grades grade = ConvertToGrade(mark);
+
+                Console.WriteLine($" {student} - Mark: {mark}, Grade: {grade}");
+            }
+
+            Console.WriteLine();
         }
+
 
         public void OutputStats()
         {
-            throw new NotImplementedException();
+            
+            Console.WriteLine($" The lowest mark is {Minimum}");
+            Console.WriteLine($" The Highest mark is {Maximum}");
+            Console.WriteLine($" The average mark is {Mean}");
         }
 
         /*Converts a student mark to a grade 
@@ -180,7 +215,7 @@ namespace ConsoleAppProject.App03
             foreach(int count in GradeProfile)
             {
                 int percentage = count * 100 / Marks.Length;
-                Console.WriteLine($"Grade {grade} {percentage}% Count {count}");
+                Console.WriteLine($" Grade {grade} {percentage}% Count {count}");
                 grade++;
             }
             Console.WriteLine();
