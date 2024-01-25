@@ -50,6 +50,11 @@ namespace WebApps.Controllers
             double bmiIndex = bmiCalculator.Bmi;
             return RedirectToAction("HealthMessage", new { bmiIndex });
         }
+
+        public IActionResult StudentGrades()
+        {
+           return View();
+        }
         public IActionResult HealthMessage(double bmiIndex)
         {
             return View(bmiIndex);
