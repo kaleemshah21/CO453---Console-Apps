@@ -3,11 +3,11 @@
 @{
     ViewData["Title"] = "Distance Converter";
 }
-
+<header class="text-center jumbotron justify-content-center bg-secondary text-light py-5">
 <h1>App01: Distance Converter</h1>
 <h2>by Kaleem Shah</h2>
 <p>This application will convert a distance entered in one unit into the equivalent distance in another unit.</p>
-
+</header>
 <form method="post">
 
     <h2>Convert from:</h2>
@@ -20,10 +20,6 @@
         <label>From Unit: </label>
         <select asp-for="@Model.FromUnit" required
         asp-items="@Html.GetEnumSelectList<DistanceUnits>()">
-            @* <option>@DistanceConverter.MILES</option>
-            <option>@DistanceConverter.METRES</option>
-            <option>@DistanceConverter.FEET</option> *@
-
         </select>
 
     </p>
@@ -53,10 +49,6 @@
         <label>To Unit: </label>
         <select asp-for="@Model.ToUnit" required
                 asp-items="@Html.GetEnumSelectList<DistanceUnits>()">
-            @* <option>@DistanceConverter.MILES</option>
-            <option>@DistanceConverter.METRES</option>
-            <option>@DistanceConverter.FEET</option> *@
-
         </select>
 
     </p>
