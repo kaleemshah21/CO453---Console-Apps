@@ -1,6 +1,7 @@
 ﻿using ConsoleAppProject.App01;
 using ConsoleAppProject.App02;
 using ConsoleAppProject.App03;
+using ConsoleAppProject.App04;
 using ConsoleAppProject.Helpers;
 using System;
 
@@ -48,6 +49,11 @@ namespace ConsoleAppProject
                 StudentGrades studentGrades = new StudentGrades();
                 studentGrades.Run();
             }
+            else if (choice == 4)
+            {
+                NetworkApp app04 = new NetworkApp();
+                app04.DisplayMenu();
+            }
 
         }
 
@@ -62,14 +68,14 @@ namespace ConsoleAppProject
             Console.WriteLine(" │ 1. App01                        │ ");
             Console.WriteLine(" │ 2. App02                        │ ");
             Console.WriteLine(" │ 2. App03                        │ ");
-            Console.WriteLine(" │ 2. App04 (not yet implemented)  │ ");
+            Console.WriteLine(" │ 2. App04                        │ ");
             Console.WriteLine(" │ 2. App05 (not yet implemented)  │ ");
             Console.WriteLine(" └─────────────────────────────────┘ ");
             Console.WriteLine("                                     ");
 
             int menuChoice;
             Console.Write(prompt);
-            while (!int.TryParse(Console.ReadLine(), out menuChoice) || menuChoice > 3 || menuChoice < 1)
+            while (!int.TryParse(Console.ReadLine(), out menuChoice) || menuChoice > 4 || menuChoice < 1)
             {
                 DisplayErrorMessage(" Invalid input. Please enter a valid choice.");
                 Console.Write(prompt);
