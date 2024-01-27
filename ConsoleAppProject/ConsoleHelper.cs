@@ -48,5 +48,12 @@ namespace ConsoleAppProject
             Console.WriteLine(message);
         }
 
+        public static string DisplayMessage(string message)
+        {
+            Console.Write(message);
+            return (Console.ReadLine());
+        }
+
+
     }
 }
