@@ -40,10 +40,10 @@ namespace ConsoleAppProject.App04
 
         private void PostMessage()
         {
-            Console.Write("\n Please enter your name: ");
-            string name = Console.ReadLine();
-            Console.Write("\n Please enter your message: ");
-            string message = Console.ReadLine();
+            string name = ConsoleHelper.DisplayMessage("\n Please enter your name: ");
+            
+            
+            string message = ConsoleHelper.DisplayMessage("\n Please enter your message: ");
             MessagePost newMessagePost = new MessagePost(name, message);
             news.AddMessagePost(newMessagePost);
         }
