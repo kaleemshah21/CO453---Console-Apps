@@ -6,6 +6,9 @@ namespace ConsoleAppProject.App04
 {
     public class Post
     {
+        private static int nextPostId = 1;
+
+        private int postId;
         private int likes;
 
         private readonly List<String> comments;
@@ -17,6 +20,7 @@ namespace ConsoleAppProject.App04
 
         public Post(string author)
         {
+            postId = nextPostId++;
             this.Username = author;
             Timestamp = DateTime.Now;
 
@@ -65,6 +69,7 @@ namespace ConsoleAppProject.App04
             Console.WriteLine($"    Author: {Username}");
             //Console.WriteLine($"    Message: {Message}");
             Console.WriteLine($"    Time Elpased: {FormatElapsedTime(Timestamp)}");
+            Console.WriteLine($"    PostID: {postId}");
             Console.WriteLine();
 
             if (likes > 0)

@@ -45,7 +45,7 @@ namespace ConsoleAppProject
 
         public static void DisplayErrorMessage(string message)
         {
-            Console.WriteLine(message);
+            Console.Write(message);
         }
 
         public static string DisplayMessage(string message)

@@ -31,10 +31,17 @@ namespace ConsoleAppProject.App04
                     case 2: PostImage(); break;
                     case 3: DisplayAll(); break;
                     case 4: DisplayPostsByUser(); break;
-                    case 5:  break;
+                    case 5: RemovePost(); break;
                     case 7: wantToQuit = true; break;
                 }
             }while (!wantToQuit);
+        }
+
+        private void RemovePost()
+        {
+            news.RemovePosts();
+
+
         }
 
         private void DisplayPostsByUser()
@@ -73,6 +80,8 @@ namespace ConsoleAppProject.App04
             PhotoPost newPhotoPost = new PhotoPost(name, imageUrl, message);
             news.AddPhotoPost(newPhotoPost);
         }
+
+        
 
         
     }

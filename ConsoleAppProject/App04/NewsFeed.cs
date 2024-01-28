@@ -76,6 +76,32 @@ namespace ConsoleAppProject.App04
 
         }
 
+        public void RemovePosts()
+        {
+            Display(); // Display all posts
+            string prompt = " Enter the Post ID of the post you want to remove: ";
+            // While loop for error checking
+            int postId;
+            
+            
+            Console.Write(prompt);
+            while (!int.TryParse(Console.ReadLine(), out postId) || postId < 1 || postId > posts.Count)
+            {
+                ConsoleHelper.DisplayErrorMessage(" Invalid input. Please enter a valid Post ID: ");
+                   
+            }
+
+                
+                
+            
+
+            
+            Post postToRemove = posts[postId - 1];
+            posts.Remove(postToRemove);
+            Console.WriteLine($" Post with ID {postId} removed successfully.");
+            Console.WriteLine();
+        }
+
         public void DisplayPostFromUser(string user)
         {
 
