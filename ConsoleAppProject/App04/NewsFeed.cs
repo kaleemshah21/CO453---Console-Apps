@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 
 namespace ConsoleAppProject.App04
@@ -63,11 +64,35 @@ namespace ConsoleAppProject.App04
         ///</summary>
         public void Display()
         {
+            List<Post> sortedPosts = posts.OrderBy(post => post.Timestamp).ToList();
+
             // display all text posts
-            foreach (Post post in posts)
+            foreach (Post post in sortedPosts)
             {
+                Console.WriteLine();
                 post.Display();
-                Console.WriteLine();   // empty line between posts
+                
+            }
+
+        }
+
+        public void DisplayPostFromUser(string user)
+        {
+
+
+            List<Post> userPosts = posts.Where(post => post.Username.Equals(user, StringComparison.OrdinalIgnoreCase)).ToList();
+            if (userPosts.Count > 0){
+                foreach (Post post in userPosts)
+                {
+                    Console.WriteLine();
+                    post.Display();
+                      
+                }
+            }
+            else
+            {
+                Console.WriteLine(" There are no Posts by that User ");
+                Console.WriteLine();
             }
 
         }

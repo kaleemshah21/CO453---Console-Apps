@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+
+// TODO: ADD A POSTID TO THE POST CLASS FOR EACH POST, THIS WILL BE USED TO REMOVE POSTS AND COMMENT / LIKE POSTS LATER
 namespace ConsoleAppProject.App04
 {
     public class NetworkApp
@@ -14,7 +16,9 @@ namespace ConsoleAppProject.App04
 
             string[] choices = new string[]
             {
-                "Post Message", "Post Image", "Display All Posts", "Quit"
+                "Post Message", "Post Image", "Display All Posts in time order", "Display posts by user", "Remove Post",
+                "quit"
+
             };
 
             bool wantToQuit = false;
@@ -26,11 +30,17 @@ namespace ConsoleAppProject.App04
                     case 1: PostMessage(); break;
                     case 2: PostImage(); break;
                     case 3: DisplayAll(); break;
-                    case 4:  break;
+                    case 4: DisplayPostsByUser(); break;
                     case 5:  break;
                     case 7: wantToQuit = true; break;
                 }
             }while (!wantToQuit);
+        }
+
+        private void DisplayPostsByUser()
+        {
+            string username = ConsoleHelper.DisplayMessage("\n Please enter the name of the user: ");
+            news.DisplayPostFromUser(username);
         }
 
         private void DisplayAll()
