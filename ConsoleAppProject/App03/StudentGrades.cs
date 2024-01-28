@@ -17,7 +17,7 @@ namespace ConsoleAppProject.App03
         
 
     //constants
-    public const int LowestMark = 0;
+        public const int LowestMark = 0;
         public const int LowestGradeD = 40;
         public const int LowestGradeC = 50;
         public const int LowestGradeB = 60;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 
 namespace ConsoleAppProject.App04
@@ -23,6 +24,7 @@ namespace ConsoleAppProject.App04
     {
         private readonly List<Post> posts;
         public const string AUTHOR = "Kaleem";
+        
         
 
         ///<summary>
@@ -76,30 +78,49 @@ namespace ConsoleAppProject.App04
 
         }
 
-        public void RemovePosts()
+        public Post FindPost(int ID)
+        {
+            foreach(Post post in posts)
+            {
+                if(post.postId == ID)
+                {
+                    return post;
+                }
+            }
+            
+            return null;
+
+        }
+
+        public void addComment(int postID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int ChoosePostId()
         {
             Display(); // Display all posts
             string prompt = " Enter the Post ID of the post you want to remove: ";
-            // While loop for error checking
             int postId;
-            
-            
+
+
             Console.Write(prompt);
-            while (!int.TryParse(Console.ReadLine(), out postId) || postId < 1 || postId > posts.Count)
+            while (!int.TryParse(Console.ReadLine(), out postId) || postId < 1)
             {
                 ConsoleHelper.DisplayErrorMessage(" Invalid input. Please enter a valid Post ID: ");
-                   
+
             }
+            return postId;
+        }
 
-                
-                
+        public void RemovePosts(Post postToRemove, int postId)
+        {
             
-
             
-            Post postToRemove = posts[postId - 1];
             posts.Remove(postToRemove);
             Console.WriteLine($" Post with ID {postId} removed successfully.");
             Console.WriteLine();
+            Display();
         }
 
         public void DisplayPostFromUser(string user)

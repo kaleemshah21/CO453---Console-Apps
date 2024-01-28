@@ -17,7 +17,7 @@ namespace ConsoleAppProject.App04
             string[] choices = new string[]
             {
                 "Post Message", "Post Image", "Display All Posts in time order", "Display posts by user", "Remove Post",
-                "quit"
+                "comment on post", "like post", "quit"
 
             };
 
@@ -32,15 +32,35 @@ namespace ConsoleAppProject.App04
                     case 3: DisplayAll(); break;
                     case 4: DisplayPostsByUser(); break;
                     case 5: RemovePost(); break;
-                    case 7: wantToQuit = true; break;
+                    case 6: CommentPost(); break;
+                    case 7: LikePost(); break;
+                    case 8: wantToQuit = true; break;
                 }
             }while (!wantToQuit);
         }
 
+        private void LikePost()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void CommentPost()
+        {
+            
+        }
+
         private void RemovePost()
         {
-            news.RemovePosts();
-
+            int id = news.ChoosePostId();
+            Post postToRemove = news.FindPost(id);
+            if (postToRemove != null )
+            {
+                news.RemovePosts(postToRemove, id);
+            }
+            else
+            {
+                Console.WriteLine(" No Post with that ID ");
+            }
 
         }
 
@@ -74,7 +94,7 @@ namespace ConsoleAppProject.App04
             {
                 ConsoleHelper.DisplayErrorMessage(" Invalid input. Please enter a valid URL ending with '.jpg' or '.png' : ");
                 Console.Write("\n Please enter your image url: ");
-                imageUrl = Console.ReadLine(); // Read the input again
+                imageUrl = Console.ReadLine();
             } 
             string message = ConsoleHelper.DisplayMessage("\n Please enter your message: ");
             PhotoPost newPhotoPost = new PhotoPost(name, imageUrl, message);

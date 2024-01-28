@@ -6,10 +6,11 @@ namespace ConsoleAppProject.App04
 {
     public class Post
     {
-        private static int nextPostId = 1;
+        private static int instances = 0;
 
-        private int postId;
-        private int likes;
+        public int postId;
+
+        public int likes;
 
         private readonly List<String> comments;
 
@@ -20,13 +21,16 @@ namespace ConsoleAppProject.App04
 
         public Post(string author)
         {
-            postId = nextPostId++;
+            instances++;
+            postId = instances;
             this.Username = author;
             Timestamp = DateTime.Now;
 
             likes = 0;
             comments = new List<String>();
         }
+
+       
         /// <summary>
         /// Record one more 'Like' indication from a user.
         /// </summary>
