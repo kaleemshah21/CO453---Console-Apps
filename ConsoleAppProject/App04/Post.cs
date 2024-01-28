@@ -91,7 +91,11 @@ namespace ConsoleAppProject.App04
             }
             else
             {
-                Console.WriteLine($"    {comments.Count}  comment(s). Click here to view.");
+                foreach (string comment in comments)
+                {
+                    Console.WriteLine($"    {comment}");
+                    Console.WriteLine();
+                }
             }
             Console.WriteLine();
         }

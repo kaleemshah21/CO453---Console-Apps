@@ -78,6 +78,8 @@ namespace ConsoleAppProject.App04
 
         }
 
+       
+
         public Post FindPost(int ID)
         {
             foreach(Post post in posts)
@@ -92,15 +94,15 @@ namespace ConsoleAppProject.App04
 
         }
 
-        public void addComment(int postID)
+        public void addComment(Post post)
         {
-            throw new NotImplementedException();
+            string message = ConsoleHelper.DisplayMessage("\n Please enter your comment: ");
+            post.AddComment(message);
         }
 
-        public int ChoosePostId()
+        public int ChoosePostId(string prompt)
         {
             Display(); // Display all posts
-            string prompt = " Enter the Post ID of the post you want to remove: ";
             int postId;
 
 
@@ -142,6 +144,16 @@ namespace ConsoleAppProject.App04
                 Console.WriteLine();
             }
 
+        }
+
+        public void addLike(Post postToLike)
+        {
+            postToLike.Like();
+        }
+
+        internal void Unlike(Post postToUnlike)
+        {
+            postToUnlike.Unlike();
         }
     }
 

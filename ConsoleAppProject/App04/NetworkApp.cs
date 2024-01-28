@@ -17,7 +17,7 @@ namespace ConsoleAppProject.App04
             string[] choices = new string[]
             {
                 "Post Message", "Post Image", "Display All Posts in time order", "Display posts by user", "Remove Post",
-                "comment on post", "like post", "quit"
+                "comment on post", "like post","dislike post", "quit"
 
             };
 
@@ -34,33 +34,75 @@ namespace ConsoleAppProject.App04
                     case 5: RemovePost(); break;
                     case 6: CommentPost(); break;
                     case 7: LikePost(); break;
-                    case 8: wantToQuit = true; break;
+                    case 8: DislikePost(); break;
+                    case 9: wantToQuit = true; break;
                 }
             }while (!wantToQuit);
         }
 
+        
+
         private void LikePost()
         {
-            throw new NotImplementedException();
-        }
-
-        private void CommentPost()
-        {
-            
-        }
-
-        private void RemovePost()
-        {
-            int id = news.ChoosePostId();
-            Post postToRemove = news.FindPost(id);
-            if (postToRemove != null )
+            int id = news.ChoosePostId(" enter the id of the post you want to like: ");
+            Post postToLike = news.FindPost(id);
+            if (postToLike != null)
             {
-                news.RemovePosts(postToRemove, id);
+                news.addLike(postToLike);
             }
             else
             {
                 Console.WriteLine(" No Post with that ID ");
             }
+        }
+
+        private void DislikePost()
+        {
+            int id = news.ChoosePostId(" enter the id of the post you want to dislike: ");
+            Post postToUnlike = news.FindPost(id);
+            if (postToUnlike != null)
+            {
+                news.Unlike(postToUnlike);
+                Console.WriteLine("successful");
+
+            }
+            else
+            {
+                Console.WriteLine(" No Post with that ID ");
+            }
+            Console.WriteLine();
+        }
+
+        private void CommentPost()
+        {
+            int id = news.ChoosePostId(" enter the id of the post you want to comment on: ");
+            Post postToComment = news.FindPost(id);
+            if(postToComment != null )
+            {
+                news.addComment(postToComment);
+                Console.WriteLine("successful");
+            }
+            else
+            {
+                Console.WriteLine(" No Post with that ID ");
+            }
+            Console.WriteLine();
+        }
+
+        private void RemovePost()
+        {
+            int id = news.ChoosePostId(" enter the id of the post you want to remove: ");
+            Post postToRemove = news.FindPost(id);
+            if (postToRemove != null )
+            {
+                news.RemovePosts(postToRemove, id);
+                Console.WriteLine("successful");
+            }
+            else
+            {
+                Console.WriteLine(" No Post with that ID ");
+            }
+            Console.WriteLine();
 
         }
 
