@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection.PortableExecutable;
 using ConsoleAppProject.Helpers;
 
+// TODO: webapp database not working, no idea why, ask andrew for help
 namespace ConsoleAppProject.App03
 {
     /// <summary>

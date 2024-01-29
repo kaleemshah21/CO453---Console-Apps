@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 
 
-// TODO: ADD A POSTID TO THE POST CLASS FOR EACH POST, THIS WILL BE USED TO REMOVE POSTS AND COMMENT / LIKE POSTS LATER
+// TODO: Add a database to store posts as webapp version of database isnt working
 namespace ConsoleAppProject.App04
 {
     public class NetworkApp
