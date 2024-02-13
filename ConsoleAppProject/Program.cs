@@ -25,6 +25,14 @@ namespace ConsoleAppProject
             }
         }
 
+        public static DistanceConverter DistanceConverter
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public static void Main(string[] args)
         {
             int choice;

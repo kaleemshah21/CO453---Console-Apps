@@ -28,6 +28,14 @@ namespace ConsoleAppProject.App01
         public double FromDistance { get; set; }
         public double ToDistance { get; set; }
 
+        public DistanceUnits DistanceUnits
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public const int FEET_IN_MILES = 5280;
         public const double METRES_IN_MILES = 1609.34;
         public const double FEET_IN_METRES = 3.28084;

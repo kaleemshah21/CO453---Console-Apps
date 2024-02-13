@@ -6,6 +6,22 @@ namespace ConsoleAppProject
 {
     public static class ConsoleHelper
     {
+        public static App02.BMI BMI
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public static App01.DistanceConverter DistanceConverter
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         /*changes length of box depending on length of title*/
         public static void OutputHeading(string title)
         {
