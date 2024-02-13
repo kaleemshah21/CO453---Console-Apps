@@ -232,9 +232,14 @@ namespace ConsoleAppProject.App02
             Metres = MetresInput;
 
         }
-        
 
-
+        public Metrics Metrics
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 
 }

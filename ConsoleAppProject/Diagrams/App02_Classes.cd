@@ -3,7 +3,7 @@
   <Class Name="ConsoleAppProject.Program">
     <Position X="1.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAARgAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAIAAAIAAAAAAAAAAAAAAAAAARgAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -13,19 +13,29 @@
   <Class Name="ConsoleAppProject.App02.BMI">
     <Position X="4.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQIAAgABggIAABQBEAAQAAAIBJAoAAglFAQAAAAAAAA=</HashCode>
+      <HashCode>AQIAAgABggIAABQBEAAQAAAIBJAoBAglFAQAAAAAAAA=</HashCode>
       <FileName>App02\BMI.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Metrics" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="ConsoleAppProject.ConsoleHelper">
     <Position X="7" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAQAAAAAAAAAAAAoAAIAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <HashCode>AAAAQAAAAAAAAIAAAoAAIAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
       <FileName>ConsoleHelper.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="BMI" />
     </ShowAsAssociation>
   </Class>
+  <Enum Name="ConsoleAppProject.App02.Metrics">
+    <Position X="7" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>App02\Metrics.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
