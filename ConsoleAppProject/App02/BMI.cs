@@ -60,9 +60,15 @@ namespace ConsoleAppProject.App02
             the bmi, which is then outputted as well as the BAME 
             message, the same for choice 2 except the methods are
             different.*/
-            string[] choices = {
+
+            /*string[] choices = {
                 $"Imperial Units",
                 $"Metric Units"   
+            };*/
+            string[] choices =
+            {
+                Metrics.Imperial.ToString(),
+                Metrics.Metric.ToString()
             };
 
             ConsoleHelper.OutputHeading("BMI Calculator");
