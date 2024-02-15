@@ -22,6 +22,30 @@ namespace ConsoleAppProject
             }
         }
 
+        public static App03.StudentGrades StudentGrades
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public static App04.NewsFeed NewsFeed
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public static App04.NetworkApp NetworkApp
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         /*changes length of box depending on length of title*/
         public static void OutputHeading(string title)
         {

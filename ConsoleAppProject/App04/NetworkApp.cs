@@ -10,6 +10,15 @@ namespace ConsoleAppProject.App04
     public class NetworkApp
     {
         private NewsFeed news = new NewsFeed();
+
+        public NewsFeed NewsFeed
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public void DisplayMenu()
         {
             ConsoleHelper.OutputHeading(" Kaleem's NewsFeed");
@@ -96,7 +105,7 @@ namespace ConsoleAppProject.App04
             if (postToRemove != null )
             {
                 news.RemovePosts(postToRemove, id);
-                Console.WriteLine("successful");
+                Console.WriteLine(" successful");
             }
             else
             {
