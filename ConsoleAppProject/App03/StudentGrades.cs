@@ -64,6 +64,9 @@ namespace ConsoleAppProject.App03
             Marks = new int[Students.Length];
 
         }
+
+        /*displays choices and allows user to choose a feature,
+         it then calls the corresponding method*/
         public void Run()
         {
             string[] choices = {
@@ -200,6 +203,7 @@ namespace ConsoleAppProject.App03
             Mean = total / Marks.Length;
         }
 
+        /*calculates the grade profile*/
         public void CalculateGradeProfile()
         {
             for(int i = 0; i < GradeProfile.Length; i++)
@@ -213,6 +217,7 @@ namespace ConsoleAppProject.App03
             }
         }
 
+        /*outputs the grade profile*/
         private void OutputGradeProfile()
         {
             Grades grade = Grades.F;

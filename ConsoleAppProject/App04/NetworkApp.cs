@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Text;
 
 
-// TODO: Add a database to store posts as webapp version of database isnt working
 namespace ConsoleAppProject.App04
 {
     public class NetworkApp
@@ -19,6 +18,9 @@ namespace ConsoleAppProject.App04
             }
         }
 
+
+        /*displays the menu, allows user to choose a function,
+         and then calls the corresponding method*/
         public void DisplayMenu()
         {
             ConsoleHelper.OutputHeading(" Kaleem's NewsFeed");
@@ -50,7 +52,8 @@ namespace ConsoleAppProject.App04
         }
 
         
-
+        /*allows the user to enter the id of a post they want to like,
+         it then finds the post with that id and adds a like to it.*/
         private void LikePost()
         {
             int id = news.ChoosePostId(" enter the id of the post you want to like: ");
@@ -65,6 +68,8 @@ namespace ConsoleAppProject.App04
             }
         }
 
+        /*allows user to enter the id of the post they want to dislike,
+         it then adds a dislike to the post*/
         private void DislikePost()
         {
             int id = news.ChoosePostId(" enter the id of the post you want to dislike: ");
@@ -82,6 +87,8 @@ namespace ConsoleAppProject.App04
             Console.WriteLine();
         }
 
+        /*allows user to choose a post with its id, it then adds the comment
+         to the post*/
         private void CommentPost()
         {
             int id = news.ChoosePostId(" enter the id of the post you want to comment on: ");
@@ -98,6 +105,7 @@ namespace ConsoleAppProject.App04
             Console.WriteLine();
         }
 
+        /*allows user to remove the post with the id that is entered*/
         private void RemovePost()
         {
             int id = news.ChoosePostId(" enter the id of the post you want to remove: ");
@@ -115,17 +123,21 @@ namespace ConsoleAppProject.App04
 
         }
 
+        /*allows user to enter the name of the user, it will then
+         show all posts by that username*/
         private void DisplayPostsByUser()
         {
             string username = ConsoleHelper.DisplayMessage("\n Please enter the name of the user: ");
             news.DisplayPostFromUser(username);
         }
 
+        /*displays all posts*/
         private void DisplayAll()
         {
             news.Display();
         }
 
+        /*user enteres their name, it then asks them to enter a message and a message post is created*/
         private void PostMessage()
         {
             string name = ConsoleHelper.DisplayMessage("\n Please enter your name: ");
@@ -136,6 +148,7 @@ namespace ConsoleAppProject.App04
             news.AddMessagePost(newMessagePost);
         }
 
+        /*user enteres their name, it then asks them to enter a image and a message, then a photo post is created*/
         private void PostImage()
         {
             

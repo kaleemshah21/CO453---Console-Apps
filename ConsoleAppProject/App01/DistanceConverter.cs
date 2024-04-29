@@ -74,6 +74,8 @@ namespace ConsoleAppProject.App01
             
         }
 
+        /*displays units and allows the user to select a unit,
+         it then returns the unit*/
         private DistanceUnits SelectUnit(string prompt)
         {
             string[] choices = {

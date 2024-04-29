@@ -4,6 +4,8 @@ using System.Text;
 
 namespace ConsoleAppProject.App04
 {
+
+    /*initialises variables*/
     public class Post
     {
         private static int instances = 0;
@@ -19,6 +21,9 @@ namespace ConsoleAppProject.App04
         public String Username { get; }
         public DateTime Timestamp { get; }
 
+        /*constructor to initialise the post properties,
+         it also increments a variable tto keep track of 
+        total number of posts*/
         public Post(string author)
         {
             instances++;
@@ -53,7 +58,6 @@ namespace ConsoleAppProject.App04
         ///<summary>
         /// Add a comment to this post.
         /// </summary>
-        /// <param name="text">
         /// The new comment to add.
         /// </param>        
         public void AddComment(String text)
@@ -64,8 +68,6 @@ namespace ConsoleAppProject.App04
         ///<summary>
         /// Display the details of this post.
         /// 
-        /// (Currently: Print to the text terminal. This is simulating display 
-        /// in a web browser for now.)
         ///</summary>
         public virtual void Display()
         {
@@ -106,7 +108,6 @@ namespace ConsoleAppProject.App04
         /// relative to current time, such as "30 seconds ago" or "7 minutes ago".
         /// Currently, only seconds and minutes are used for the string.
         /// </summary>
-        /// <param name="time">
         ///  The time value to convert (in system milliseconds)
         /// </param> 
         /// <returns>

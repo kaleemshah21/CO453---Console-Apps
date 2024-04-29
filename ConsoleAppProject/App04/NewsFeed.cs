@@ -10,15 +10,11 @@ namespace ConsoleAppProject.App04
     /// The NewsFeed class stores news posts for the news feed in a social network 
     /// application.
     /// 
-    /// Display of the posts is currently simulated by printing the details to the
-    /// terminal. (Later, this should display in a browser.)
     /// 
-    /// This version does not save the data to disk, and it does not provide any
-    /// search or ordering functions.
     ///</summary>
     ///<author>
-    ///  Michael Kölling and David J. Barnes
-    ///  version 0.1
+    ///  Kaleem Shah
+    ///  version 0.8
     ///</author> 
     public class NewsFeed
     {
@@ -51,7 +47,6 @@ namespace ConsoleAppProject.App04
         ///<summary>
         /// Add a text post to the news feed.
         /// 
-        /// @param text  The text post to be added.
         ///</summary>
         public void AddMessagePost(MessagePost message)
         {
@@ -61,7 +56,6 @@ namespace ConsoleAppProject.App04
         ///<summary>
         /// Add a photo post to the news feed.
         /// 
-        /// @param photo  The photo post to be added.
         ///</summary>
         public void AddPhotoPost(PhotoPost photo)
         {
@@ -69,8 +63,8 @@ namespace ConsoleAppProject.App04
         }
 
         ///<summary>
-        /// Show the news feed. Currently: print the news feed details to the
-        /// terminal. (To do: replace this later with display in web browser.)
+        /// Show the news feed, prints the news feed details to the
+        /// terminal.
         ///</summary>
         public void Display()
         {
@@ -87,7 +81,7 @@ namespace ConsoleAppProject.App04
         }
 
        
-
+        /*finds a post from the postid and returns the post*/
         public Post FindPost(int ID)
         {
             foreach(Post post in posts)
@@ -102,12 +96,15 @@ namespace ConsoleAppProject.App04
 
         }
 
+        /*adds a comment to the post*/
         public void addComment(Post post)
         {
             string message = ConsoleHelper.DisplayMessage("\n Please enter your comment: ");
             post.AddComment(message);
         }
 
+        /*allows user to choose a post id, it also checks for a valid input,
+         then returns the postid*/
         public int ChoosePostId(string prompt)
         {
             Display(); // Display all posts
@@ -123,6 +120,7 @@ namespace ConsoleAppProject.App04
             return postId;
         }
 
+        /*removes the post and displays a success message*/
         public void RemovePosts(Post postToRemove, int postId)
         {
             
@@ -133,6 +131,7 @@ namespace ConsoleAppProject.App04
             Display();
         }
 
+        /*displays all posts from the user that is passed through*/
         public void DisplayPostFromUser(string user)
         {
 
@@ -154,11 +153,13 @@ namespace ConsoleAppProject.App04
 
         }
 
+        /*adds a like to the post*/
         public void addLike(Post postToLike)
         {
             postToLike.Like();
         }
 
+        /*removes a like from the post*/
         internal void Unlike(Post postToUnlike)
         {
             postToUnlike.Unlike();

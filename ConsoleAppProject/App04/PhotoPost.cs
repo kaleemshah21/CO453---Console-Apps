@@ -25,24 +25,15 @@ namespace ConsoleAppProject.App04
         
 
         ///<summary>
-        /// Constructor for objects of class PhotoPost.
+        /// Constructor, sets up filename and caption.
         ///</summary>
-        /// <param name="author">
-        /// The username of the author of this post.
-        /// </param>
-        /// <param name="caption">
-        /// A caption for the image.
-        /// </param>
-        /// <param name="filename">
-        /// The filename of the image in this post.
-        /// </param>
-        /// 
         public PhotoPost(String author, String filename, String caption): base(author)
         {
             this.Filename = filename;
             this.Caption = caption;
         }
 
+        /*overides the display method to add the filename and caption*/
         public override void Display()
         {
             Console.WriteLine($"    Filename: [{Filename}]");
