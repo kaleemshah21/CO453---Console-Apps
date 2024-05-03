@@ -64,18 +64,27 @@ namespace ConsoleAppProject.App04
 
         ///<summary>
         /// Show the news feed, prints the news feed details to the
-        /// terminal.
+        /// terminal. if variation 1, it will display in time order, if not it will display in normal order
         ///</summary>
-        public void Display()
+        public void Display(int variation)
         {
-            List<Post> sortedPosts = posts.OrderBy(post => post.Timestamp).ToList();
-
-            // display all text posts
-            foreach (Post post in sortedPosts)
+            if (variation == 1)
             {
-                Console.WriteLine();
-                post.Display();
-                
+                List<Post> sortedPosts = posts.OrderByDescending(post => post.Timestamp).ToList();
+                // display all text posts
+                foreach (Post post in sortedPosts)
+                {
+                    Console.WriteLine();
+                    post.Display();
+                }
+            }
+            else
+            {
+                foreach (Post post in posts)
+                {
+                    Console.WriteLine();
+                    post.Display();
+                }
             }
 
         }
@@ -105,9 +114,14 @@ namespace ConsoleAppProject.App04
 
         /*allows user to choose a post id, it also checks for a valid input,
          then returns the postid*/
-        public int ChoosePostId(string prompt)
+        public int ChoosePostId(string prompt,int variation)
         {
-            Display(); // Display all posts
+            if (variation == 1)
+            {
+                Display(2); // Display all posts
+            }
+            
+            
             int postId;
 
 
@@ -128,8 +142,9 @@ namespace ConsoleAppProject.App04
             posts.Remove(postToRemove);
             Console.WriteLine($" Post with ID {postId} removed successfully.");
             Console.WriteLine();
-            Display();
+            Display(2);
         }
+
 
         /*displays all posts from the user that is passed through*/
         public void DisplayPostFromUser(string user)

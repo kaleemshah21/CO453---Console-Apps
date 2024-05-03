@@ -27,7 +27,7 @@ namespace ConsoleAppProject.App04
 
             string[] choices = new string[]
             {
-                "Post Message", "Post Image", "Display All Posts in time order", "Display posts by user", "Remove Post",
+                "Post Message", "Post Image","Display All Posts", "Display All Posts in time order", "Display posts by user","Display post by ID", "Remove Post",
                 "comment on post", "like post","dislike post", "quit"
 
             };
@@ -41,12 +41,14 @@ namespace ConsoleAppProject.App04
                     case 1: PostMessage(); break;
                     case 2: PostImage(); break;
                     case 3: DisplayAll(); break;
-                    case 4: DisplayPostsByUser(); break;
-                    case 5: RemovePost(); break;
-                    case 6: CommentPost(); break;
-                    case 7: LikePost(); break;
-                    case 8: DislikePost(); break;
-                    case 9: wantToQuit = true; break;
+                    case 4: DisplayAllByDate(); break;
+                    case 5: DisplayPostsByUser(); break;
+                    case 6: DisplayPostById(); break;
+                    case 7: RemovePost(); break;
+                    case 8: CommentPost(); break;
+                    case 9: LikePost(); break;
+                    case 10: DislikePost(); break;
+                    case 11: wantToQuit = true; break;
                 }
             }while (!wantToQuit);
         }
@@ -56,7 +58,7 @@ namespace ConsoleAppProject.App04
          it then finds the post with that id and adds a like to it.*/
         private void LikePost()
         {
-            int id = news.ChoosePostId(" enter the id of the post you want to like: ");
+            int id = news.ChoosePostId(" enter the id of the post you want to like: ",1);
             Post postToLike = news.FindPost(id);
             if (postToLike != null)
             {
@@ -72,7 +74,7 @@ namespace ConsoleAppProject.App04
          it then adds a dislike to the post*/
         private void DislikePost()
         {
-            int id = news.ChoosePostId(" enter the id of the post you want to dislike: ");
+            int id = news.ChoosePostId(" enter the id of the post you want to dislike: ", 1);
             Post postToUnlike = news.FindPost(id);
             if (postToUnlike != null)
             {
@@ -91,7 +93,7 @@ namespace ConsoleAppProject.App04
          to the post*/
         private void CommentPost()
         {
-            int id = news.ChoosePostId(" enter the id of the post you want to comment on: ");
+            int id = news.ChoosePostId(" enter the id of the post you want to comment on: ",1);
             Post postToComment = news.FindPost(id);
             if(postToComment != null )
             {
@@ -108,7 +110,7 @@ namespace ConsoleAppProject.App04
         /*allows user to remove the post with the id that is entered*/
         private void RemovePost()
         {
-            int id = news.ChoosePostId(" enter the id of the post you want to remove: ");
+            int id = news.ChoosePostId(" enter the id of the post you want to remove: ",1);
             Post postToRemove = news.FindPost(id);
             if (postToRemove != null )
             {
@@ -130,11 +132,24 @@ namespace ConsoleAppProject.App04
             string username = ConsoleHelper.DisplayMessage("\n Please enter the name of the user: ");
             news.DisplayPostFromUser(username);
         }
+        /*allows user to enter an id, it will then display that post*/
+        private void DisplayPostById()
+        {
+            int id = news.ChoosePostId(" enter the id of the post you want to view: ", 2);
+            Post postToDisplay = news.FindPost(id);
+            postToDisplay.Display();
+        }
 
         /*displays all posts*/
         private void DisplayAll()
         {
-            news.Display();
+            news.Display(2);
+        }
+
+        /*displays all posts by date*/
+        private void DisplayAllByDate()
+        {
+            news.Display(1);
         }
 
         /*user enteres their name, it then asks them to enter a message and a message post is created*/
