@@ -43,6 +43,86 @@ namespace ConsoleApps.Test
         }
 
         [TestMethod]
+        public void Convert40ToGradeD()
+        {
+            Grades expectedGrade = Grades.D;
+
+            Grades actualGrade = converter.ConvertToGrade(40);
+
+            Assert.AreEqual(expectedGrade, actualGrade);
+        }
+
+        [TestMethod]
+        public void Convert49ToGradeD()
+        {
+            Grades expectedGrade = Grades.D;
+
+            Grades actualGrade = converter.ConvertToGrade(49);
+
+            Assert.AreEqual(expectedGrade, actualGrade);
+        }
+
+        [TestMethod]
+        public void Convert50ToGradeC()
+        {
+            Grades expectedGrade = Grades.C;
+
+            Grades actualGrade = converter.ConvertToGrade(50);
+
+            Assert.AreEqual(expectedGrade, actualGrade);
+        }
+
+        [TestMethod]
+        public void Convert59ToGradeC()
+        {
+            Grades expectedGrade = Grades.C;
+
+            Grades actualGrade = converter.ConvertToGrade(59);
+
+            Assert.AreEqual(expectedGrade, actualGrade);
+        }
+
+        [TestMethod]
+        public void Convert60ToGradeB()
+        {
+            Grades expectedGrade = Grades.B;
+
+            Grades actualGrade = converter.ConvertToGrade(60);
+
+            Assert.AreEqual(expectedGrade, actualGrade);
+        }
+
+        [TestMethod]
+        public void Convert69ToGradeB()
+        {
+            Grades expectedGrade = Grades.B;
+
+            Grades actualGrade = converter.ConvertToGrade(69);
+
+            Assert.AreEqual(expectedGrade, actualGrade);
+        }
+
+        [TestMethod]
+        public void Convert70ToGradeA()
+        {
+            Grades expectedGrade = Grades.A;
+
+            Grades actualGrade = converter.ConvertToGrade(70);
+
+            Assert.AreEqual(expectedGrade, actualGrade);
+        }
+
+        [TestMethod]
+        public void Convert100ToGradeA()
+        {
+            Grades expectedGrade = Grades.A;
+
+            Grades actualGrade = converter.ConvertToGrade(100);
+
+            Assert.AreEqual(expectedGrade, actualGrade);
+        }
+
+        [TestMethod]
         public void TestCalculateMean()
         {
             converter.Marks = statsMarks;
