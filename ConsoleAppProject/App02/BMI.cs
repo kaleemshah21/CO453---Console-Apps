@@ -133,7 +133,7 @@ namespace ConsoleAppProject.App02
             double PoundsInput;
             
             Console.Write(" Enter weight in stones: ");
-            while (!int.TryParse(Console.ReadLine(), out StoneInput) || StoneInput < 0)
+            while (!int.TryParse(Console.ReadLine(), out StoneInput) || StoneInput < 4 || StoneInput > 100)
             {
                 ConsoleHelper.DisplayErrorMessage(" Invalid input. Please enter a valid positive number for stones.");
                 Console.Write(" Enter weight in stones: ");
@@ -180,7 +180,7 @@ namespace ConsoleAppProject.App02
             int FeetInput;
 
             Console.Write(" Enter height in feet: ");
-            while (!int.TryParse(Console.ReadLine(), out FeetInput) || FeetInput < 0)
+            while (!int.TryParse(Console.ReadLine(), out FeetInput) || FeetInput < 2 || FeetInput > 9)
             {
                 ConsoleHelper.DisplayErrorMessage(" Invalid input. Please enter a valid positive number for feet.");
                 Console.Write(" Enter height in feet: ");
@@ -207,7 +207,7 @@ namespace ConsoleAppProject.App02
             double KilogramsInput;
             
             Console.Write(" Enter weight in Kilograms: ");
-            while (!double.TryParse(Console.ReadLine(), out KilogramsInput) || KilogramsInput < 1)
+            while (!double.TryParse(Console.ReadLine(), out KilogramsInput) || KilogramsInput < 10 || KilogramsInput > 1000)
             {
                 ConsoleHelper.DisplayErrorMessage(" Invalid input. Please enter a valid positive number for Kilograms.");
                 Console.Write(" Enter weight in Kilograms: ");
@@ -224,7 +224,7 @@ namespace ConsoleAppProject.App02
             double MetresInput;
            
             Console.Write(" Enter Height in Metres: ");
-            while (!double.TryParse(Console.ReadLine(), out MetresInput) || MetresInput < 1)
+            while (!double.TryParse(Console.ReadLine(), out MetresInput) || MetresInput < 1 || MetresInput > 10)
             {
                 ConsoleHelper.DisplayErrorMessage(" Invalid input. Please enter a valid positive number for Kilograms.");
                 Console.Write(" Enter Height in Metres: ");
